@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: #2c3e50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        main{
+            display: flex;
+            /*border: 1px solid silver;*/
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+            /*transform: perspective(900px) rotateX(-45deg);*/
+            transform: perspective(900px) ;
+            transition: 2s;
+            transform-origin: center center 100px;
+        }
+        body:hover main{
+            /*transform: perspective(900px) rotateX(180deg) rotateY(180deg);*/
+            transform: perspective(900px)  rotateY(180deg);
+        }
+        div{
+
+            position: absolute;
+            background-color: #24c789;
+            font-size: 4em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform-origin: center center 100px;
+            opacity: .7;
+        }
+        div:nth-child(1){
+            background-color: #e67e22;
+            width: 400px;
+            height: 200px;
+        }
+        div:nth-child(2){
+            background-color: #2980b9;
+            width: 400px;
+            height: 200px;
+            transform: translateZ(-200px);
+        }
+        div:nth-child(3){
+            width: 200px;
+            height: 200px;
+            transform-origin: left;
+            background-color: #e74c3c;
+            transform: rotateY(90deg);
+        }
+        div:nth-child(4){
+            background-color: #8e44ad;
+            width: 200px;
+            height: 200px;
+            transform-origin: right;
+            transform:translateX(200px) rotateY(-90deg);
+        }
+        div:nth-child(5){
+            width: 400px;
+            height: 200px;
+            background-color: #e67e22;
+            transform: rotateX(-90deg);
+            transform-origin: top;
+        }
+        div:nth-child(6){
+             background-color: #e67e22;
+            transform: rotateX(90deg);
+            width: 400px;
+            height: 200px;
+            transform-origin: bottom;
+         }
+
+    </style>
+</head>
+<body>
+
+        <main>
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+        </main>
+
+
+</body>
+</html>

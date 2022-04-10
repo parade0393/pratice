@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .clearfix{
+            zoom: 1;
+        }
+        .clearfix:after{
+            content: " ";
+            display: block;
+            font-size: 0;
+            line-height: 0;
+            height: 0;
+            visibility: hidden;
+            clear: both;
+        }
+
+        .mycards {
+            margin: 0 10px;
+        }
+        .mycards > div{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .card_item {
+            width: 32%;
+            background-color: #24c789;
+            height: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card_item:not(:nth-child(3n)) {
+            margin-right: calc(4% / 2);
+            /*  这个可以根据需求自行修改 7%=100%-31%(宽度)*3(列数) 每行最后一个没有margin*/
+        }
+
+
+    </style>
+</head>
+<body>
+<!--flex 自适应宽度-->
+<div class="mycards">
+    <div>
+        <div class="card_item"></div>
+        <div class="card_item"></div>
+        <div class="card_item"></div>
+        <div class="card_item"></div>
+        <div class="card_item"></div>
+        <div class="card_item"></div>
+        <div class="card_item"></div>
+        <div class="card_item"></div>
+    </div>
+
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

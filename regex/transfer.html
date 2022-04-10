@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>转义</title>
+</head>
+<body>
+
+<script>
+    //js中\也是转义字符 正则中\也是转义字符
+    console.log("d"==="d")//true
+    console.log("\d" === "d")//true
+    // console.log("\")//这样写会报错的
+    console.log("\\")// \
+    console.log("\d+\.\d+")//d+.d+
+    console.log("\\d+\\.\\d+")//\d+\.\d+
+    console.log("\\\\")// \\
+    console.log("\\r\\")// \r\
+</script>
+</body>
+</html>

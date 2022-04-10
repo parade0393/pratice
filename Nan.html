@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let str = "37a";
+    let n = Number(str);
+    if (!isNaN(n)) {
+        console.log("是数字")
+    }else {
+        console.log("不是数字")
+    }
+    const user = {
+        name:"zhangsan",
+        mobile:"13798761234"
+    }
+    localStorage.setItem("user",JSON.stringify(user))
+    setTimeout(()=>{
+        console.log(JSON.parse(localStorage.getItem("user")).name)
+    },2000)
+</script>
+</body>
+</html>

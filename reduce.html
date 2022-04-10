@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    let flatArr = [
+        {id: 1, title: "解忧杂货铺1", parent_id: 0},
+        {id: 2, title: '解忧杂货铺2', parent_id: 0},
+        {id: 3, title: '解忧杂货铺2-1', parent_id: 2},
+        {id: 4, title: '解忧杂货铺3-1', parent_id: 3},
+        {id: 5, title: '解忧杂货铺4-1', parent_id: 4},
+        {id: 6, title: '解忧杂货铺2-2', parent_id: 2},
+    ]
+
+    /**
+     *
+     * @param {Array} list  原始扁平数组
+     * @param {String} cIdName 代表孩子节点的属性名称
+     * @param {String} pIdName 代表父节点的属性名称
+     * @param {String} treeFieldName 返回的树形数据的子节点的属性名称
+     * @param  rootPidValue 代表根节点的属性值
+     * @returns res JSON树形机构数组
+     */
+    function convertPlatListToTreeData(list,cIdName,pIdName,treeFieldName,rootPidValue = null) {
+       const res = []
+        const map = list.reduce((res,v) => (res[v[cIdName]] = v,res),{})
+        for (let item of list) {
+            if (item[pIdName] === rootPidValue){
+                res.push(item)
+                continue
+            }
+            if (item[pIdName] in map){//找到item的父元素
+                const parent = map[item[pIdName]]//
+                parent[treeFieldName] = parent[treeFieldName] || [] //父元素里添加子元素
+                parent[treeFieldName].push(item)//父元素里添加子元素
+
+            }
+        }
+        return res
+    }
+    let returnTree = convertPlatListToTreeData(flatArr,"id","parent_id","items",0);
+    console.log(returnTree);
+
+</script>
+</body>
+</html>

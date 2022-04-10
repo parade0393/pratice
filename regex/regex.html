@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let tel = "010-9999999"//true
+    tel = "020-9999999"//true
+    tel = "010"//true
+    tel = "020"//false
+    //，这样表示是否包含010或者020\-\d{7,8}整体匹配到的
+    console.log(/010|020\-\d{7,8}/.test(tel))//test是检测字符串是否包含正则匹配到的内容,只要包含就返回true
+</script>
+</body>
+</html>

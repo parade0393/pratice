@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+    <style>
+        .error {
+            border: 5px solid rebeccapurple;
+        }
+    </style>
+</head>
+<body>
+<input type="text" validate rule="max:12,min:3">
+<input type="text" validate rule="max:3,isNumber">
+</body>
+
+<script>
+    "use strict"
+
+    class Validate {
+        max(value, length) {
+            return value.length <= length
+        }
+
+        min(value, length) {
+            return value.length >= length
+        }
+
+        isNumber(value) {
+            return /^\d+$/.test(value)
+        }
+    }
+
+    function ProxyFactory(target) {
+        return new Proxy(target, {
+            get(target, key) {
+                return target[key]
+            },
+            set(target, key, el) {
+                const rule = el.getAttribute("rule")
+                const validate = new Validate()
+                let state = rule.split(",").every(rule => {
+                   const info = rule.split(":")
+                    return validate[info[0]](el.value,info[1])
+                })
+                el.classList[state?"remove":"add"]("error")
+                return true
+            }
+        })
+    }
+
+   const proxy = ProxyFactory(document.querySelectorAll("[validate]"))
+    proxy.forEach((item,index) =>{
+        item.addEventListener("keyup",function (){
+            proxy[index] = this
+        })
+    })
+</script>
+</html>

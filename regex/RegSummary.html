@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /**
+     * 正则方法：
+     * 1.test 默认不是整体匹配的，整体匹配需要加上边界符^和$
+     * 2.exec 类似于Java的find方法 ***注意使用此方法必须使用g模式 否则会死循环***
+     * 字符串方法：
+     * 1.search：检索匹配的子符串开始的索引 只匹配第一个符合的子串
+     * 2.match 默认只匹配第一个找到的子串返回一个数组(包括匹配到的内容和分组等信息) 如果使用g模式会返回匹配的所有子串但不包括分组等其他信息
+     * 3.matchAll 此方法必须使用g模式，否则会抛异常 返回一个迭代器 迭代器里的每个元素都有详细的信息(匹配的内容分组等信息)
+     * 4.split 拆分字符串
+     * 5.replace 替换
+     */
+    const content = "23parade岁月山大佛i和房符合parade0393df发parade同学";
+    let reg = /parade(0393|岁月)/
+    // console.log(reg.test(content))//true 这里正则默认不是整体匹配的，只要有子字符串满足正则就返回true
+    // reg = /^parade(0393|岁月)&/
+    // console.log(reg.test(content))//false 整体匹配就是false了
+    reg = /parade(0393|岁月)/g//这里必须使用g模式，否则while会进入死循环
+    let list = []
+    while ((res = reg.exec(content))){
+        list.push(res)//返回值res是一个数组，res[0]是匹配到的对象，res[1]是第一个分组 res[2]是第二个分组，还有groups属性存储了命名分组
+    }
+    console.log(list)
+    reg = /parade(0393|岁月)/g
+    console.log(content.search(reg))//2
+    for (let item of content.matchAll(reg)) {
+        console.log(item)
+    }
+
+    let str = "(010)9999999 (020)8888888"
+    let reg$ = /\((\d{3,4})\)(\d{7,8})/g
+    console.log(str.replace(reg$,"$1-$2"))//010-9999999 020-8888888  //$1和$2是在外部使用分组
+    //$& - 正则表达式匹配的文本
+    //$` - 匹配文本的左侧内容
+    //' - 匹配文本的右侧内容
+        let text = "abc123def";
+    console.log(text.replace(/\d+/g, "[$&]"))   // abc[123]def
+    console.log(text.replace(/\d+/g, "[$`]"))     // abc[abc]def
+    console.log(text.replace(/\d+/g, "[$']"));   // abc[def]def
+
+    let testStr = "23parade岁月山大佛i和房符合parade0393df发parade同学"
+    console.log(testStr.replace(/parade(0393|岁月)/g,"$`"))//2323山大佛i和房符合23parade岁月山大佛i和房符合df发parade同学 这个有点坑，匹配左边的
+</script>
+</body>
+</html>

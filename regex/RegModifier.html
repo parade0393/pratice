@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>修饰符</title>
+</head>
+<body>
+
+<script>
+    let content = "123sd#&^%SD"
+    let regStr = /[a-z]/ //默认是区分大小写的和非贪婪匹配的 得到的结果 s
+    regStr = /[a-z]+/g//得到的结果sd
+    regStr = /[a-z]+/ig//得到的结果sd SD
+    let match = content.match(regStr);
+    console.log(...match)
+
+    //多行匹配
+    let str = `
+            #1 js,90 #
+            #2 java,86 #
+            #3 djfi,3 # dsf
+            #4 Kotlin,87 #
+    `
+    let reg = /^\s*#\d+.+\s+#$/gm  //m的意思是每行单独对待
+   let lessons =  str.match(reg).map(v => {
+        v = v.replace(/\s*#\d+\s*/,"").replace(/#/,"").replace(/\s+/,"");
+        [name,price] = v.split(",")
+        return {name,price}
+    })
+    console.log(JSON.stringify(lessons))//[{"name":"js","price":"90"},{"name":"java","price":"86"},{"name":"Kotlin","price":"87"}]
+    //
+</script>
+</body>
+</html>

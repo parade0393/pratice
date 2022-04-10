@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //输出顺序请看序号
+    //宏任务
+    setTimeout(()=>{
+        console.log("setTimeout")//5
+    },0)
+
+    //new Promise并不会产生微任务,里面的代码也是同步执行的
+    //then会产生微任务 但默认是不会产生微任务的 只有在new promise 中调用了resolve或者reject后才会产生微任务
+    new Promise((resolve, reject) => {
+        console.log("promise")//1
+        resolve("成功")//这里面的代码是同步执行的
+    }).then(res=>{
+        console.log(res)//4
+    })
+    console.log("main")//2
+    for (let i = 0; i < 10; i++) {
+        console.log(i)//3
+    }
+</script>
+</body>
+</html>

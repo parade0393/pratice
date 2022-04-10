@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+    <style>
+        .container{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <p>大热</p>
+    <p>大热</p>
+    <p>大热</p>
+    <p>大热</p>
+    <p>大热</p>
+    <p>大热</p>
+    <p>大热</p>
+</div>
+</body>
+<script>
+    /*
+  * 查找一个字符串中的所有子串的位置
+  */
+    var str = "I think of other ages that floated upon the stream of life and love and death";
+    var positions = new Array();
+    function searchSubStr(str,subStr){
+        var pos = str.indexOf(subStr);
+        while(pos>-1){
+            positions.push(pos);
+            pos = str.indexOf(subStr,pos+1);
+        }
+    }
+    searchSubStr(str,"o");
+    // alert(positions);//8,11,29,37,51,64
+
+    let list = []
+    let reg = /o/g
+    while ((res = reg.exec(str))){
+        list.push(res.index)
+    }
+    console.log(list)//[8, 11, 29, 37, 51, 64]
+
+</script>
+</html>

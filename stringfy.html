@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+
+</head>
+<body>
+
+<script>
+    const  obj = {
+        foundation:"chrome",
+        model:"box",
+        week:45,
+        transport:"car",
+        month:7,
+        obj:{
+            name:"henry",
+            age:23
+        },
+        fun:function open(){}
+    }
+    function replacer(key, value) {
+        console.log(key,value)//第一次key是空字符串，value是序列化的对象
+        if (typeof value == 'string'){
+            return undefined
+        }
+        return value
+    }
+
+    function replacerFunc(key,value){
+        console.log(key,value)
+        if (typeof value === "string"){
+            return ()=>{}
+        }
+        return value
+    }
+
+    const jnObj = {
+        name: "hh",
+        toJSON(){
+            return "自我"
+        }
+    }
+
+    const list = [1,"22",3]
+
+    // console.log(JSON.stringify(obj,replacerFunc))
+    // console.log(JSON.stringify(list,replacerFunc))
+    console.log(JSON.stringify(jnObj))
+</script>
+</body>
+</html>

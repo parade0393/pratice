@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>贪婪</title>
+</head>
+<body>
+
+<script>
+    let content = "123000"
+    let reg = /^(\d+)(0*)$/
+    console.log(content.match(reg))//第一组是123000
+    reg = /^(\d+?)(0*)$///禁止贪婪
+    console.log(content.match(reg))//第一组是123 match默认不是整体匹配
+</script>
+</body>
+</html>

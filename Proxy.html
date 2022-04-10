@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+
+<input type="text" v-model="title">
+<input type="text" v-model="title">
+<h4 v-bind="title">这里也会发生更新</h4>
+
+<script>
+    const obj = {name :"parade"}
+    const proxy = new Proxy(obj,{
+        get(obj,property){
+            console.log(property)
+            return obj[property]
+        },
+        set(obj,property,value){
+            obj[property] = value
+            return true
+        }
+    })
+
+    //代理控制对象
+    console.log(proxy.name)
+    proxy.name = "henry"
+    console.log(proxy.name)
+    console.log(proxy)
+
+    //代理控制函数
+    function fac(num) {
+        return num === 1?1:num*fac(num-1)
+    }
+
+    console.log(fac(3))
+    let fProxy = new Proxy(fac,{
+        apply(target, thisArg, argArray) {
+            //函数 上下文 参数
+            console.time("proxy")
+            target.apply(thisArg,argArray)
+            console.timeEnd("proxy")
+        }
+    })
+    fProxy.apply(this,[5])
+
+
+    //代理控制数组
+    const lessons = [
+        {
+            name:"math",
+            score:90
+        },
+        {
+            name: "english",
+            score: 93
+        }
+    ]
+    const aProxy = new Proxy(lessons,{
+        get (array,key){
+            console.log(array[key])
+        },
+
+    })
+    console.log(aProxy[0])
+
+    function View() {
+        let proxy = new Proxy({},{
+            get(oj,property){
+
+            },
+            set(obj,property,value){
+                console.log()
+                document.querySelectorAll(`[v-model="${property}"]`).forEach(item => {
+                    item.value = value
+                })
+                document.querySelectorAll(`[v-bind="${property}"]`).forEach(item => {
+                    item.innerHTML = value
+                })
+            },
+        })
+        this.init = function (){
+            const  els = document.querySelectorAll("[v-model]");
+            els.forEach(item => {
+                item.addEventListener("keyup",function (){
+                   proxy[this.getAttribute("v-model")] = this.value
+                })
+            })
+        }
+    }
+
+    new View().init()
+
+
+
+</script>
+</body>
+</html>

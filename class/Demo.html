@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class User {
+        age = 23//这样每个对象都会有，但是并不是静态属性
+        static grade = "three"//静态属性
+        #level = 4//私有属性，外界不能直接修改
+        constructor(name) {
+            this.name = name//属性是每个对象独有的
+        }
+        set level(value){
+            this.#level = value
+        }
+        show(){//方法会自动的放在原型上并且是不可遍历的  for in 不会遍历到，但是函数prototype定义的方法，默认是被遍历的
+            // console.log(this.name)
+            return "23"
+        }
+        #check = ()=>{//私有方法
+
+        }
+    }
+    let user = new User("parade")
+    // user.#level = 23//这样修改浏览器会报错
+    user.level = 23
+    console.dir(User)
+    console.log(user)
+
+    class Admin extends User{
+        show() {
+            super.show();
+            return "admin"
+        }
+    }
+    console.dir(Admin)
+    console.log(new Admin("").show())
+</script>
+</html>

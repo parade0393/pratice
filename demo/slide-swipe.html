@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+    <style>
+        body{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        main{
+            width: 400px;
+            height: 200px;
+            overflow: hidden;
+        }
+        section{
+            display: flex;
+            width: 1600px;
+            height: 200px;
+            animation-name: slide;
+            animation-timing-function: steps(4,end);
+            animation-duration: 4s;
+        }
+        section:hover{
+            animation-play-state: paused;
+        }
+        div{
+            width: 400px;
+            height: 200px;
+        }
+        img{
+            width: 100%;
+        }
+        @keyframes slide {
+            to{
+                transform: translateX(-1600px);
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <div><img src="../images/1.jpg" alt=""></div>
+            <div><img src="../images/2.jpg" alt=""></div>
+            <div><img src="../images/3.jpg" alt=""></div>
+            <div><img src="../images/4.jpg" alt=""></div>
+        </section>
+    </main>
+</body>
+</html>

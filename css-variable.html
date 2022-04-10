@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+    <style>
+
+        .tagList{
+            --color:#24c789;
+            --text:"一切"
+        }
+
+
+        span::after{
+            /*content: attr(data-tip);*/
+            content: var(--text);
+            color: var(--color,pink);
+        }
+    </style>
+</head>
+<body>
+    <div class="tagList">
+        <p>
+            <span class="demo" data-tip="shi">
+                覅偶的回复
+            </span>
+        </p>
+    </div>
+    <script>
+        setTimeout(() => {
+            // document.getElementsByClassName("demo")[0].setAttribute("data-tip","改了")
+            document.getElementsByClassName("tagList")[0].style.setProperty("--text","改了")
+            document.getElementsByClassName("tagList")[0].style.setProperty("--color", "#ff0000");
+        },2000)
+    </script>
+</body>
+</html>

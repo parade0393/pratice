@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    "use strict"
+    const DATA = Symbol()
+    let user= {
+        [DATA]:{name:"",age:0},
+        set name(value){
+            this[DATA].name = value
+        },
+
+        get name(){
+            return this[DATA].name
+        }
+    }
+    user.name = "parade"
+    console.log(user.name)
+
+    function User(name,age){
+        let data = {name,age}
+        Object.defineProperties(this,{
+            name:{
+                get(){
+                   return  data.name
+                },
+                set (value){
+                    data.name = value
+                }
+            },
+            age:{
+                get(){
+                    return  data.age
+                },
+                set (value){
+                    data.age = value
+                }
+            },
+
+        })
+    }
+    const man = new User("0393",25)
+    console.log(man.name,man.age)
+
+    class People {//
+        constructor(name,age) {
+            this.data = {name,age}
+        }
+
+        get name(){
+            return this.data.name
+        }
+        set name(value){
+            this.data.name = "henry"
+        }
+    }
+
+    const people = new People("henry",12)
+    console.log(people.name)
+</script>
+</body>
+</html>

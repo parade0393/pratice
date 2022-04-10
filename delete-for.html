@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let arr = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+    //方法一：倒叙遍历删除
+    // for (let i = arr.length - 1; i >=0; i--) {
+    //     if (arr[i] > 2){
+    //         arr.splice(i,1)
+    //         console.log(arr)
+    //     }
+    //
+    // }
+    // console.log(arr)
+
+    //方法二：正序修改索引值
+    // for (let i = 0; i < arr.length; i++) {
+    //     if (arr[i] > 2){
+    //         arr.splice(i--,1)
+    //     }
+    // }
+    // console.log(arr)
+    
+    // (function () {
+    //     let arr = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+    //     let i = arr.length
+    //     while (i--){
+    //         if (arr[i] > 2){
+    //             arr.splice(i,1)
+    //         }
+    //     }
+    //     console.log(arr)
+    // })()
+</script>
+</body>
+</html>
