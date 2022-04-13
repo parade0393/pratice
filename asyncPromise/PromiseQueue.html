@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Promise队列</title>
+</head>
+<body>
+<script>
+    /**
+     * 队列当中每一个成员都要是Promise
+     */
+
+    // function queue(params) {
+    //     let promise = Promise.resolve()
+    //     params.map(v => {//promise变量是一直变化的--是链式的，要等上一个promise状态变化之后才会执行本次Promise
+    //        promise =  promise.then(_ => {
+    //            return new Promise(resolve => {
+    //                setTimeout(() => {
+    //                    console.log(v)
+    //                    resolve()
+    //                },1000)
+    //            })
+    //         })
+    //     })
+    // }
+
+    // function queue(params) {
+    //     let promise = Promise.resolve()
+    //     params.map((value, index) => {
+    //         promise = promise.then(() => {
+    //             return new Promise((resolve, reject) => {
+    //                 if (index === 0) {
+    //                     console.log(value)
+    //                     resolve()
+    //                 } else {
+    //                     setTimeout(() => {
+    //                         console.log(value)
+    //                         resolve()
+    //                     }, 1000)
+    //                 }
+    //
+    //             })
+    //         })
+    //     })
+    // }
+
+    function queue(params){
+        let promise = Promise.resolve()
+        params.reduce((pre,cur)=>{
+           return  pre.then(value => {
+                return new Promise((resolve, reject) => {
+                    setTimeout(()=>{
+                        console.log(cur)
+                        resolve()
+                    },1000)
+                })
+            })
+        },promise)
+    }
+    queue([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+</script>
+</body>
+</html>

@@ -1,7 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d89db08-0f74-43b7-9473-77656b614559" name="Default Changelist" comment="" />
+    <list default="true" id="9d89db08-0f74-43b7-9473-77656b614559" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/asyncPromise/PromiseAll.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/asyncPromise/PromiseQueue.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/asyncPromise/async.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/asyncPromise/error.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/asyncPromise/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/async/start.html" beforeDir="false" afterPath="$PROJECT_DIR$/asyncPromise/start.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/class/Demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/Demo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,6 +45,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
     <exe-path />
@@ -24,6 +55,9 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectId" id="1xvaL0AfZUXcOS5QC7VcZZfkyK7" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -119,6 +153,9 @@
       <workItem from="1649514416765" duration="1943000" />
       <workItem from="1649582760503" duration="7639000" />
       <workItem from="1649633877522" duration="578000" />
+      <workItem from="1649684180052" duration="5955000" />
+      <workItem from="1649718217186" duration="2150000" />
+      <workItem from="1649769726802" duration="4285000" />
     </task>
     <servers />
   </component>
@@ -130,6 +167,18 @@
         <option value="$PROJECT_DIR$/ts.js" />
       </list>
     </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="640" y="308" key="#Custom_Plugin_Repositories" timestamp="1647781250721">

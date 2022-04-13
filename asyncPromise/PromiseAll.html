@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    const  p1 = new Promise((resolve, reject) => {
+        setTimeout(()=>{
+            // resolve("第一个异步")
+            reject("error")
+        },2000)
+    })
+    const p2 = new Promise((resolve, reject) => {
+        setTimeout(()=>{
+            resolve("第二个异步")
+        },1000)
+    })
+
+    Promise.all([p1,p2]).then(value => {
+        console.log(value)//all里所有的任务都成功后才会返回数据 ,并且数据的顺序和数组里的promise顺序一样
+    }).catch(err => {
+        // console.log(err)//其中任何一个失败，则返回失败
+    })
+
+    Promise.allSettled([p1,p2]).then(value => {
+        // console.dir(value)//不管是成功还是失败都会返回
+    })
+    Promise.race([p1,p2]).then(value => {
+        console.log(value)//race 竞赛 返回第一个完成的Promise
+    })
+</script>
+</body>
+</html>
