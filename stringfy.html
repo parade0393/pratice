@@ -19,7 +19,8 @@
             name:"henry",
             age:23
         },
-        fun:function open(){}
+        fun:function open(){},
+        other:undefined
     }
     function replacer(key, value) {
         console.log(key,value)//第一次key是空字符串，value是序列化的对象
@@ -46,9 +47,17 @@
 
     const list = [1,"22",3]
 
-    // console.log(JSON.stringify(obj,replacerFunc))
-    // console.log(JSON.stringify(list,replacerFunc))
-    console.log(JSON.stringify(jnObj))
+    //第二个参数的返回值为undefined或者函数时，该属性值会被过滤掉
+    //但如果序列化的是数组，若 replacer 函数返回 undefined 或者函数，当前值不会被忽略，而将会被 null 取代。
+    /**
+     * 出现在非数组对象属性值中: undefined、任意函数、Symbol 值在序列化过程中将会被忽略
+     * 出现在数组中: undefined、任意函数、Symbol值会被转化为 null
+     * 单独转换时: 会返回 undefined
+     */
+    // console.log(JSON.stringify(obj,replacerFunc))//{"week":45,"month":7,"obj":{"age":23}}
+    console.log(JSON.stringify(list,replacerFunc))
+    // console.log(JSON.stringify(jnObj))
+    console.log(JSON.stringify(undefined))  // undefined
 </script>
 </body>
 </html>
