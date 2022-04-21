@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /**
+     * 由于js是单线程的，所以不存在多线程的并发问题(多个线程同时操作同一个变量)
+     * js的任务的内存是共享的
+     * JavaScript是单线程的，可以理解为同一时间只能做一件事，同时有一个to-do-list(任务队列)，手头里的事情做完之后，就会取队列里拿任务做，没有任务就休息。
+     * Js里有主任务，微任务，宏任务。优先级是主任务>微任务>宏任务
+     * 定时器是宏任务，可以理解为当定时器时间到后才会把定时器里的任务放到宏任务队列里等待执行
+     * Promise.then 是微任务 只有调用了resolve才会调用then产生一个微任务
+     */
+
+    let i = 0
+    setTimeout(() => {
+        console.log(++i)
+    }, 1000)
+    setTimeout(() => {
+        console.log(++i)
+    }, 1000)
+    //最终i是2，因为只有一个任务结束后才会只执行另一个任务
+</script>
+</body>
+</html>

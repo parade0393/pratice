@@ -28,7 +28,7 @@
       <envs />
     </TaskOptions>
     <TaskOptions isEnabled="false">
-      <option name="arguments" value="--sourcemap --targe &quot;ES5&quot;" />
+      <option name="arguments" value="--targe &quot;ES5&quot;" />
       <option name="checkSyntaxErrors" value="true" />
       <option name="description" />
       <option name="exitCodeBehavior" value="ERROR" />

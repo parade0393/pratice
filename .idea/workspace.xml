@@ -19,14 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d89db08-0f74-43b7-9473-77656b614559" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/asyncPromise/PromiseAll.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asyncPromise/PromiseQueue.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asyncPromise/async.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asyncPromise/error.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/asyncPromise/test.html" afterDir="false" />
+    <list default="true" id="5c93fadd-edf0-4575-a39c-3a27f62a997b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/asyncPromise/memory.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/variable/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/variable/js/1.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/async/start.html" beforeDir="false" afterPath="$PROJECT_DIR$/asyncPromise/start.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Nan.html" beforeDir="false" afterPath="$PROJECT_DIR$/Nan.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asyncPromise/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/asyncPromise/test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/class/Demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/class/Demo.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
     </list>
@@ -42,6 +43,7 @@
         <option value="tsconfig.json" />
         <option value="TypeScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -97,7 +99,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9d89db08-0f74-43b7-9473-77656b614559" name="Default Changelist" comment="" />
+      <changelist id="5c93fadd-edf0-4575-a39c-3a27f62a997b" name="Default Changelist" comment="" />
       <created>1631237956156</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -156,6 +158,16 @@
       <workItem from="1649684180052" duration="5955000" />
       <workItem from="1649718217186" duration="2150000" />
       <workItem from="1649769726802" duration="4285000" />
+      <workItem from="1649892512211" duration="919000" />
+      <workItem from="1649928667909" duration="641000" />
+      <workItem from="1649929783076" duration="37000" />
+      <workItem from="1649930035888" duration="183000" />
+      <workItem from="1649943178337" duration="793000" />
+      <workItem from="1650075830193" duration="15000" />
+      <workItem from="1650079008171" duration="881000" />
+      <workItem from="1650249221719" duration="14000" />
+      <workItem from="1650363236778" duration="45000" />
+      <workItem from="1650497234319" duration="1882000" />
     </task>
     <servers />
   </component>
@@ -165,6 +177,8 @@
       <list>
         <option value="$PROJECT_DIR$/ts.js.map" />
         <option value="$PROJECT_DIR$/ts.js" />
+        <option value="$PROJECT_DIR$/ts/test.js.map" />
+        <option value="$PROJECT_DIR$/ts/test.js.map" />
       </list>
     </option>
   </component>
@@ -185,22 +199,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="640" y="308" key="#Custom_Plugin_Repositories/0.0.1536.824@0.0.1536.824" timestamp="1647781250721" />
+    <state x="345" y="40" key="#JSHint" timestamp="1650497745278">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="345" y="40" key="#JSHint/0.0.1536.824@0.0.1536.824" timestamp="1650497745278" />
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1648132148581">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1648132148581" />
-    <state x="536" y="165" width="744" height="648" key="EditFileWatcherDialog" timestamp="1648359718303">
+    <state x="536" y="165" width="744" height="648" key="EditFileWatcherDialog" timestamp="1649943932232">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="536" y="165" width="744" height="648" key="EditFileWatcherDialog/0.0.1536.824@0.0.1536.824" timestamp="1648359718303" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1647781306385">
+    <state x="536" y="165" width="744" height="648" key="EditFileWatcherDialog/0.0.1536.824@0.0.1536.824" timestamp="1649943932232" />
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1649943928072">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1647781306385" />
-    <state x="270" y="57" key="SettingsEditor" timestamp="1648359849156">
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1649943928072" />
+    <state x="270" y="57" key="SettingsEditor" timestamp="1649943934011">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1648359849156" />
+    <state x="270" y="57" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1649943934011" />
     <state x="468" y="144" width="600" height="536" key="find.popup" timestamp="1648169075793">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -209,6 +227,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1646868165021" />
+    <state x="701" y="348" key="scopes" timestamp="1649943802733">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="701" y="348" key="scopes/0.0.1536.824@0.0.1536.824" timestamp="1649943802733" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1649595394265">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

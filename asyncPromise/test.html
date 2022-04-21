@@ -16,7 +16,8 @@
         reason => console.log(reason)
     )
     console.log(p1)//因为执行了resolve那行代码所以变成了fulfilled的状态
-    console.log(p2)//then产生了一个微任务(也是promise)，执行这个打印的时候，微任务还没执行，所以这个个pending状态
+    console.log(p2)//then产生了一个微任务(也是promise)，执行这个打印的时候，微任务还没执行，所以这个是pending状态，
+    //但是在浏览器中查看p2，点开后是fulfilled状态，也是对的，因为点开之前微任务已经执行了
 
     // setTimeout(() => {
     //     //忽略上面的打印，执行下面两个打印的时候，then产生的微任务已经执行了，所以p2变成了fulfilled
@@ -41,6 +42,11 @@
     }).then(value => {
         console.log(value)//输出返回成功
     },reason => {})
+
+    let obj = {a:1}
+    console.log(obj)//浏览器打卡之后，没有点开之前显示是1,点开之后显示是2--这个没有错，我们当前想看到当时打印的值，但是打印结束后值确实发生了变化
+    obj.a = 2
+    console.log(obj)
 </script>
 </body>
 </html>

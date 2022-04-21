@@ -10,8 +10,8 @@
 </body>
 <script>
     class User {
-        age = 23//这样每个对象都会有，但是并不是静态属性
-        static grade = "three"//静态属性
+        age = 23//这样每个对象都会有，但是并不是静态属性，是放在每个new 出来的对上上
+        static grade = "three"//静态属性 是放在User这个class对象上
         #level = 4//私有属性，外界不能直接修改
         constructor(name) {
             this.name = name//属性是每个对象独有的

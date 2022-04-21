@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+<script src="./js/1.js"></script>
+<script>
+    web = "123"
+    show()//变量也可以不用var let const 声明，这样其实就是挂载到了window上
+    console.log(web)//由于1.js的show方法里也没有用任何声明，所以这里调用show后会覆盖web="123"，而打印1.js里的值
+    console.log(window.web)
+
+    //-----------------------------
+    var i = 90
+    for (let i = 0; i < 5; i++) {
+        console.log(i)//这里的i的作用域是在循环体这个块里
+    }
+    var j = 78
+    for (var j = 0; j < 5; j++) {
+        console.log(j)//这里的j的作用域是全局的，也就是在循环体外部也可以访问到j
+    }
+    console.log(i);//90
+    console.log(j);//5
+
+    //--------------------------
+
+    /*
+    * 上下引入两个js文件，每个js文件之间是平等的，可以互相访问彼此的全局作用域的变量
+    * */
+
+    //-------------------
+    var g_a = "g_a"
+    console.log(g_a)//g_a
+    console.log(window.g_a)//g_a
+    let g_B = "g_b";
+    console.log(g_B)//g_b
+    console.log(window.g_B)//undefined
+    //上面的例子可以看出直接访问变量和通过window访问变量还是有所不同的
+    //------------
+</script>
+</body>
+</html>
