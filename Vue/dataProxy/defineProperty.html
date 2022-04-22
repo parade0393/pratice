@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    let num = 19
+    let jack = {
+        name:"parade",
+        sex:"1",
+        score:num//这样定义的属性不会随着num的改变而改变
+    }
+
+    //用这种方式添加的属性特征默认都是false
+    Object.defineProperty(jack,"age",{
+        value:18,
+        enumerable:true,//控制属性是否可以枚举 默认false
+        writable:true,//控制属性是否可以被修改，默认false
+        configurable:true,//控制属性是否可以被控制(删除)，
+        get:function (){
+            return num//这种定义的属性会随num的改变而改变
+        },
+        set(v) {
+            num = v
+        }
+    })
+
+
+    console.log( Object.getOwnPropertyDescriptors(jack))
+    console.log(jack)//打印对象的时候浏览器也会对不能枚举的属性做颜色上的区分
+</script>
+</body>
+</html>
