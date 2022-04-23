@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/day.js"></script>
+</head>
+<body>
+
+<div id="root">
+<!--  过滤器可以写多个，过滤器的一个参数永远时管道符前面的值  -->
+    <h3>{{time | timeFormatter(134) | strSlice}}</h3>
+</div>
+
+
+</body>
+<script>
+    Vue.config.productionTip = false
+    //全局过滤器
+    Vue.filter("strSlice",function (value) {
+        return value.slice(0,4)
+    })
+    new Vue({
+        el: "#root",
+        data: {
+            time: 1650679494442
+        },
+        filters: {//局部过滤器
+            timeFormatter(value, arg) {//过滤器第一个参数永远是管道符左边的值
+                console.log(value, arg)
+                return dayjs(value).format("YYYY-MM-DD HH:mm:ss")
+            }
+        }
+    })
+
+</script>
+</html>
