@@ -26,14 +26,48 @@ Vue实例上的所有的属性以及Vue原型上的所有的属性在Vue模板�
      * Make sure to turn on production mode when deploying for production.
      */
     Vue.config.productionTip = false//阻止Vue在启动时生成生产提示----
+    let data = {
+        name: "parade",
+        address: "LY"
+    }
     //View实例是VM
     const  vm = new Vue({
         el: "#root",
-        data: {//数据是Model，这些数据都直接在编译后都直接挂载到了Vue的实例上
-            name: "parade",
-            address: "LY"
-        }
+        // data: {//数据是Model，这些数据都直接在编译后都直接挂载到了Vue的实例上
+        //     name: "parade",
+        //     address: "LY"
+        // }
+        data
     })
     console.log(vm)
+    console.log(vm._data === data)//true
+</script>
+
+<script>
+
+    let data1 = {
+        name:"parade",
+        address: "ly"
+    }
+
+    let observer = new Observer(data1);
+
+    let vm1 = {}//假设有一个View实例
+    vm1._data = data1 = observer;
+
+
+    function Observer(obj) {
+        let keys = Object.keys(obj);
+        keys.forEach(k => {
+            Object.defineProperty(this,k,{
+                get (){
+                    return data[k]
+                },
+                set (value){
+                    data[k] = value
+                }
+            })
+        })
+    }
 </script>
 </html>
