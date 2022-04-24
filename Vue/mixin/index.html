@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+    <h3></h3>
+    <button @click="show()">局部混入</button>
+    <button @click="globalShow">全局混入</button>
+</div>
+
+<script type="module">
+    Vue.config.productionTip = false
+    import {mixin} from "./js/mixin.js";
+
+    Vue.mixin({
+        methods: {
+            globalShow(){
+                console.log("全局混入")
+            }
+        }
+    })
+    new Vue({
+        el:"#root",
+        data:{
+            name:"我是一只小小鸟"
+        },
+        mixins:[mixin],
+        methods:{
+
+        }
+    })
+</script>
+</body>
+</html>
