@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>非单文件组件</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+<div id="root">
+   <school></school>
+    <br>
+    <student></student>
+    <br>
+    <hello></hello>
+</div>
+
+<div id="root2">
+    <hello></hello>
+</div>
+<script>
+    Vue.config.productionTip = false
+    const  school = Vue.extend({
+        data(){
+            return{
+                name:"学校"
+            }
+        },
+        template:`<h1>{{name}}</h1>`
+    })
+    //组件
+    const student = Vue.extend({
+        data(){
+            return{
+                name:"学生"
+            }
+        },
+        template:`
+          <div>
+          <h1>{{name}}</h1>
+          <button @click="showM">点击</button>
+          </div>
+        `,
+        methods:{
+            showM(){
+                alert(this.name)
+            }
+        }
+    })
+
+    const hello = Vue.extend({
+        data(){
+            return {
+                name:"全局组件"
+            }
+        },
+        template:`<div>
+        <h1>{{name}}</h1>
+        </div>`
+    })
+
+    //注册全局组件
+    Vue.component('hello',hello)
+
+    new Vue({
+        el:"#root",
+        //注册组件:局部注册
+        components:{
+            school,
+            student
+        }
+    })
+
+    new Vue({
+        el:"#root2",
+    })
+</script>
+</body>
+</html>
