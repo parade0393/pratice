@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+<!--
+模块化演进史：
+面对模块化方案：我们需要关注两点：①：如何导出；②：如何导入
+1、浏览器端
+    1.开始没有模块化
+    2.AMD/CMD--CMD推崇依赖就近  AMD推崇依赖前置
+    刚开始有了一种模块化解决方案require.js---这种方案使用的多了产生了AMD规范(Asynchronous Module Definition)-异步模块定义规范
+    同时有另外一种模块解决方案SeaJs-这种方案的普及产生了CMD规范(Common Module Definition)
+2.服务器端：
+随着node的诞生，服务器端的模块规范common.js被创建出来
+导出用module.exports 导入用require
+require是运行时调用，所以编译期间不会报错 运行js文件使用node命令  node 文件名
+commonJs规范仅定义了exports,但exports有一个问题，所以module.exports被创建了出来 被成为commonJs2
+每个文件都是一个模块,每个模块都有一个module对象，这个module对象的exports属性用来导出接口
+3.webpack
+require.context() 是webpack的api 参考连接 https://www.jianshu.com/p/c894ea00dfec
+还有require('path')未了解
+webpack使用module.exports导出的也可以使用import导入?
+-->
+<script type="module">
+    /*
+    * 导出的是肯定是一个对象，export default导出的可以用任意名字来接收
+    * import是编译过程加载，所以需要放在顶部（并非绝对） 使用import导入的时候也可以写在任何位置
+    * */
+    import def, {first, obj, third as alias} from "./js/output.js"
+    import './js/all.js'//这样会加载整个all.js模块，但未导入该模块的任何接口
+    // import {request} from "./commonjs/main.js"
+
+
+    console.log(def)
+    console.log(first)
+    console.log(obj)
+    console.log(alias)
+    // console.log(start)
+    // request()
+    import('./js/dEsm.js').then(res => {
+        console.log(res.dynamic)
+    })
+</script>
+</body>
+<script data-main="./js/main" src="./js/require.js"></script>
+</html>
