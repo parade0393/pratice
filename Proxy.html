@@ -12,16 +12,21 @@
 <h4 v-bind="title">这里也会发生更新</h4>
 
 <script>
-    const obj = {name :"parade"}
+    const obj = {name :"parade",age:12}
     const proxy = new Proxy(obj,{
         get(obj,property){
             console.log(property)
-            return obj[property]
+           return  Reflect.get(obj,property)
+            // return obj[property]
         },
         set(obj,property,value){
-            obj[property] = value
+            // obj[property] = value
+            Reflect.set(obj, property, value);
             return true
-        }
+        },
+        deleteProperty(target, p) {
+            return delete target[p]
+        },
     })
 
     //代理控制对象
@@ -72,7 +77,6 @@
 
             },
             set(obj,property,value){
-                console.log()
                 document.querySelectorAll(`[v-model="${property}"]`).forEach(item => {
                     item.value = value
                 })
