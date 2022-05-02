@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+<!--
+js执行语句时分为以下3步骤
+1.词法分析
+2.预编译
+3.解释执行
+
+-->
+<script>
+    let a = {n:1}
+    console.log(a.x = a = {n:2})// {n:2}运算是从右往左->即 a.x = (a = {n:2})//在编译阶段已经确定了a的值，固在执行完a = {n:2}后a.x的a依然是{n:1}
+    console.log(a)//此行输出的是最终的a即{n:2}
+    console.log(a.x)//undefined
+    //执行过程相当于下面的代码：
+
+    let c = {n:1}
+    let d = c
+    c.x = c = {n:2}
+    console.log(c)//{n:2}
+    console.log(d)//{n:1,x:{n:2}}
+
+    //赋值表达式本身的值为要赋值的值
+    let x = 2
+    const y = 3
+    console.log(x = y+1)//4
+    console.log(x = x*y)//12
+</script>
+</body>
+</html>

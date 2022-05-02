@@ -20,19 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6bd3bcd-2712-448b-bd7a-907cf9949f0f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/module/commonjs/config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/commonjs/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/commonjs/utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/js/all.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/js/commonRequire.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/js/config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/js/dEsm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/js/output.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/js/require.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/js/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Vue/Plugins.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/operator.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Vue/directive.html" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/directive.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,6 +165,9 @@
       <workItem from="1650363236778" duration="45000" />
       <workItem from="1650497234319" duration="1882000" />
       <workItem from="1650766558759" duration="11533000" />
+      <workItem from="1650928902699" duration="1552000" />
+      <workItem from="1651014318789" duration="2414000" />
+      <workItem from="1651155731475" duration="1177000" />
     </task>
     <task id="LOCAL-00001" summary="Vue指令">
       <created>1650757501741</created>
@@ -189,7 +183,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650771365101</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Reflect">
+      <created>1650930790517</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1650930790517</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,7 +219,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Vue指令" />
     <MESSAGE value="Vue 混入" />
-    <option name="LAST_COMMIT_MESSAGE" value="Vue 混入" />
+    <MESSAGE value="Reflect" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reflect" />
   </component>
   <component name="WindowStateProjectService">
     <state x="640" y="308" key="#Custom_Plugin_Repositories" timestamp="1647781250721">
