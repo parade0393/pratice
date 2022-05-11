@@ -160,7 +160,7 @@
     }, [])
 
 
-    console.log(result)
+    // console.log(result)
 
     let flatArr = [
         {id: 1, title: "解忧杂货铺1", parent_id: 0},
@@ -241,9 +241,12 @@
 
     function flatten(data) {
         //{id, title, pid, children = []}，这段代码利用了对象的展开语法
-        return data.reduce((arr, {id, title, pid, children = []}) =>
-            arr.concat([{id, title, pid}], flatten(children)), []);
+        return data.reduce((arr, { children = [],...args}) =>
+            arr.concat([{...args}], flatten(children)), []);
     }
+
+    // const flatten = arr =>
+    //     arr.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []);
 
     let obj = {
         "id": 6558,
@@ -5476,6 +5479,92 @@
         "isDelete": false,
         "areaKey": "LY"
     }
+
+    let testArr = [
+        {
+            id: 11,
+            value:11,
+            label: "一级标题",
+            children: [],
+        },
+        {
+            id: 1,
+            value:1,
+            label: "一级标题名称",
+            children: [
+                {
+                    id: 2,
+                    pid: 1,
+                    value:2,
+                    label: "二级标题名称",
+                    children: [
+                        {
+                            id: 3,
+                            pid: 2,
+                            value:3,
+                            label: "三级标题名称",
+                        },
+                        {
+                            id: 12,
+                            value:12,
+                            label: "三级标题名称",
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 4,
+            value:4,
+            label: "一级标题名称",
+            children: [
+                {
+                    id: 5,
+                    value:5,
+                    pid: 4,
+                    label: "二级标题名称",
+                },
+            ],
+        },
+        {
+            id: 6,
+            value:6,
+            label: "一级标题名称",
+            children: [
+                {
+                    id: 7,
+                    value:7,
+                    pid: 6,
+                    label: "二级标题名称",
+                    children: [
+                        {
+                            id: 8,
+                            value:8,
+                            pid: 7,
+                            label: "三级标题名称",
+                            children: [
+                                {
+                                    id: 9,
+                                    value:9,
+                                    pid: 8,
+                                    label: "四级标题",
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
+        },
+        {
+            id: 10,
+            value:10,
+            label: "一及标题",
+            children: [],
+        },
+    ]
+    // let flat = testArr.flat(Infinity);
+    console.log(flatten(testArr))
+    console.log(testArr)
 </script>
 </body>
 </html>

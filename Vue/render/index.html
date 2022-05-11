@@ -14,7 +14,7 @@
 <script>
     new Vue({
         el:"#root",
-        render:h => h('h1','hello')
+        render:h => h('h1',{'class':'app-container'},['hello',h('button',['按钮'])])
     })
 </script>
 </body>
