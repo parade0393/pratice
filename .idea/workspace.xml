@@ -19,12 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6bd3bcd-2712-448b-bd7a-907cf9949f0f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/nth.html" afterDir="false" />
+    <list default="true" id="fe51c81e-9977-4a55-a849-5492d2b65f45" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/module/Es6/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/module/Es6/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/module/Es6/utils.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/module/Es6Test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vue/render/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Vue/render/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/array.html" beforeDir="false" afterPath="$PROJECT_DIR$/array.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/module/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/operator.html" beforeDir="false" afterPath="$PROJECT_DIR$/operator.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +38,8 @@
         <option value="package.json" />
         <option value="tsconfig.json" />
         <option value="TypeScript File" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -96,7 +97,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d6bd3bcd-2712-448b-bd7a-907cf9949f0f" name="Default Changelist" comment="" />
+      <changelist id="fe51c81e-9977-4a55-a849-5492d2b65f45" name="Default Changelist" comment="" />
       <created>1631237956156</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -174,6 +175,7 @@
       <workItem from="1652170021260" duration="1893000" />
       <workItem from="1652252325521" duration="1191000" />
       <workItem from="1652259763418" duration="881000" />
+      <workItem from="1652658242547" duration="732000" />
     </task>
     <task id="LOCAL-00001" summary="Vue指令">
       <created>1650757501741</created>
