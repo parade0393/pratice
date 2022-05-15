@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+    <script src="./js/v3.js"></script>
+</head>
+<body>
+<div id="root">
+    <h1>Data中的属性{{num}}</h1>
+    <h1>计算属性{{cName}}</h1>
+    <h1>方法调用:{{mName()}}</h1>
+    <h1>引起变化的数字:{{num}}</h1>
+</div>
+<script>
+    let rootComponent = {
+        data(){
+            return{
+                name:"parade",
+                num:0,
+                timer:null
+            }
+        },
+        computed:{
+            cName(){
+                console.log("计算属性")
+                return this.name.slice(0,2)
+            }
+        },
+        methods:{
+            mName(){
+                console.log("方法调用")
+                return this.name.slice(0,2)
+            }
+        },
+        watch:{
+            num(val){
+                if (val >=10){
+                    clearInterval(this.timer)
+                }
+            }
+        },
+        mounted(){
+            this.timer = setInterval(()=>{
+                this.num++
+            },500)
+        }
+
+    }
+    Vue.createApp(rootComponent).mount("#root")
+</script>
+</body>
+</html>

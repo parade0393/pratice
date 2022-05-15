@@ -17,6 +17,8 @@ Vue实例上的所有的属性以及Vue原型上的所有的属性在Vue模板�
     <h1>地址：{{address}}</h1>
     <h1>测试JS表达式：{{1+1}}</h1>
     <h1>测试JS表达式：{{$attrs}}</h1>
+    <h1>响应式数字:{{num}}</h1>
+    <div>{{now()}}</div>
 <!--    模板里可以使用Vue实例上的所有内容以及Vue原型上的内容-->
 </div>
 </body>
@@ -28,7 +30,9 @@ Vue实例上的所有的属性以及Vue原型上的所有的属性在Vue模板�
     Vue.config.productionTip = false//阻止Vue在启动时生成生产提示----
     let data = {
         name: "parade",
-        address: "LY"
+        address: "LY",
+        num:1,
+        timer:null
     }
     //View实例是VM
     const  vm = new Vue({
@@ -37,10 +41,34 @@ Vue实例上的所有的属性以及Vue原型上的所有的属性在Vue模板�
         //     name: "parade",
         //     address: "LY"
         // }
-        data
+        data,
+        computed:{
+            // now(){
+            //     console.log("调用了")
+            //     return this.name.slice(0,2)
+            // }
+        },
+        methods:{
+            now(){
+                console.log("aaaaaaaaaaaaaa")
+                return this.name.slice(0,2)
+            }
+        },
+        watch:{
+            num(newVal){
+                if (newVal>=10){
+                   clearInterval(this.timer)
+                }
+            }
+        },
+        mounted(){
+            this.timer = setInterval(()=>{
+                this.num++
+            },500)
+        }
     })
-    console.log(vm)
-    console.log(vm._data === data)//true
+    // console.log(vm)
+    // console.log(vm._data === data)//true
 </script>
 
 <script>
