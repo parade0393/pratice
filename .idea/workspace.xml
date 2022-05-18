@@ -20,12 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe51c81e-9977-4a55-a849-5492d2b65f45" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/module/Es6/config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/Es6/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/Es6/utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/module/Es6Test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/util/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/operator.html" beforeDir="false" afterPath="$PROJECT_DIR$/operator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/regex/RegSummary.html" beforeDir="false" afterPath="$PROJECT_DIR$/regex/RegSummary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,6 +174,9 @@
       <workItem from="1652252325521" duration="1191000" />
       <workItem from="1652259763418" duration="881000" />
       <workItem from="1652658242547" duration="732000" />
+      <workItem from="1652659020014" duration="48000" />
+      <workItem from="1652663878127" duration="23000" />
+      <workItem from="1652844049944" duration="7220000" />
     </task>
     <task id="LOCAL-00001" summary="Vue指令">
       <created>1650757501741</created>
@@ -198,7 +199,21 @@
       <option name="project" value="LOCAL" />
       <updated>1650930790517</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Es6模块测试">
+      <created>1652659045419</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1652659045419</updated>
+    </task>
+    <task id="LOCAL-00005" summary="链式赋值添加注释">
+      <created>1652659063500</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1652659063500</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +243,9 @@
     <MESSAGE value="Vue指令" />
     <MESSAGE value="Vue 混入" />
     <MESSAGE value="Reflect" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reflect" />
+    <MESSAGE value="Es6模块测试" />
+    <MESSAGE value="链式赋值添加注释" />
+    <option name="LAST_COMMIT_MESSAGE" value="链式赋值添加注释" />
   </component>
   <component name="WindowStateProjectService">
     <state x="640" y="308" key="#Custom_Plugin_Repositories" timestamp="1647781250721">
