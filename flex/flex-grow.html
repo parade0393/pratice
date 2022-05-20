@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+    <style>
+        * {
+
+            padding: 10px;
+            margin: 5px;
+        }
+        article {
+            width: 600px;
+            position: relative;
+            height: 200px;
+            border: solid 5px silver;
+            display: flex;
+        }
+        article div {
+            min-height: 80px;
+            border: solid 5px blueviolet;
+            text-align: center;
+            font-size: 28px;
+        }
+        article div:nth-of-type(1) {
+            width: 100px;
+            flex-grow: 1;
+        }
+        article div:nth-of-type(2) {
+            width: 100px;
+            flex-grow: 3;
+        }
+        article div:nth-of-type(3) {
+            width: 300px;
+            flex-grow: 6;
+        }
+    </style>
+</head>
+<body>
+<article>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+</article>
+</body>
+</html>
