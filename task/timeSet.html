@@ -13,6 +13,7 @@
         console.log("定时器执行了")//输出顺序③定时器时间到了之后，参会把定时器的任务放到宏任务队列里
     },1000)
     console.log("定时器id："+timerId)//输出顺序①
+    // clearTimeout(timerId)//如果执行了这句代码，就不会输出定时器里的打印了
     console.log("主任务执行了")//输出顺序②
 </script>
 </html>
