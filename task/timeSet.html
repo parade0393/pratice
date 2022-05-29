@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let timerId = setTimeout(()=>{
+        console.log("定时器执行了")//输出顺序③定时器时间到了之后，参会把定时器的任务放到宏任务队列里
+    },1000)
+    console.log("定时器id："+timerId)//输出顺序①
+    console.log("主任务执行了")//输出顺序②
+</script>
+</html>
