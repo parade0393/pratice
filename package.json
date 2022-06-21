@@ -1,211 +1,24 @@
 {
-  "success": true,
-  "code": "0",
-  "msg": "打卡成功",
-  "result": {
-    "check_time": 1647881463,
-    "records": [
-      {
-        id: "395644",
-        check_time: "1647879474",
-        status: "1",
-        status_str: "上班",
-        longitude: "112.498924",
-        latitude: "34.627092",
-        wifi: "建企大数据",
-        address: "洛龙区·太康东路339号·恒生·创业大厦",
-        mobile_imei: "",
-        remarks: "",
-        locationName: null,
-        govId: 132,
-        deviceType: 0,
-        clockItems: [
-          {
-            govId: 132,
-            address: "洛龙区·太康东路339号·恒生·创业大厦"
-          },
-          {
-            govId: 5192,
-            address: "洛龙区·太康东路339号·恒生·创业大厦"
-          },
-          {
-            govId: 6558,
-            address: "洛龙区·太康东路339号·恒生·创业大厦"
-          },
-          {
-            govId: 6646,
-            address: "洛龙区·太康东路339号·恒生·创业大厦"
-          },
-          {
-            govId: 6650,
-            address: "洛龙区·太康东路339号·恒生·创业大厦"
-          },
-          {
-            govId: 6927,
-            address: "洛龙区·太康东路339号·恒生·创业大厦"
-          }
-        ]
-      },
-      {
-        id: "395645",
-        check_time: "1647880081",
-        status: "2",
-        status_str: "下班",
-        longitude: "112.498734",
-        latitude: "34.627323",
-        wifi: "建企大数据",
-        address: "洛龙区·太康东路337号·恒生·创业大厦",
-        mobile_imei: "",
-        remarks: "",
-        locationName: null,
-        govId: 132,
-        deviceType: 0,
-        clockItems: [
-          {
-            govId: 132,
-            address: "洛龙区·太康东路337号·恒生·创业大厦"
-          },
-          {
-            govId: 5192,
-            address: "洛龙区·太康东路337号·恒生·创业大厦"
-          },
-          {
-            govId: 6558,
-            address: "洛龙区·太康东路337号·恒生·创业大厦"
-          },
-          {
-            govId: 6646,
-            address: "洛龙区·太康东路337号·恒生·创业大厦"
-          },
-          {
-            govId: 6650,
-            address: "洛龙区·太康东路337号·恒生·创业大厦"
-          },
-          {
-            govId: 6927,
-            address: "洛龙区·太康东路337号·恒生·创业大厦"
-          }
-        ]
-      },
-      {
-        id: "395646",
-        check_time: "1647881463",
-        status: "2",
-        status_str: "下班",
-        longitude: "112.498577",
-        latitude: "34.62732",
-        wifi: "建企大数据",
-        address: "洛龙区·太康东路373号·恒生·创业大厦",
-        mobile_imei: "",
-        remarks: "",
-        locationName: null,
-        govId: 132,
-        deviceType: 0,
-        clockItems: [
-          {
-            govId: 132,
-            address: "洛龙区·太康东路373号·恒生·创业大厦"
-          },
-          {
-            govId: 5192,
-            address: "洛龙区·太康东路373号·恒生·创业大厦"
-          },
-          {
-            govId: 6558,
-            address: "洛龙区·太康东路373号·恒生·创业大厦"
-          },
-          {
-            govId: 6646,
-            address: "洛龙区·太康东路373号·恒生·创业大厦"
-          },
-          {
-            govId: 6650,
-            address: "洛龙区·太康东路373号·恒生·创业大厦"
-          },
-          {
-            govId: 6927,
-            address: "洛龙区·太康东路373号·恒生·创业大厦"
-          }
-        ]
-      }
-    ],
-    "group": [
-      {
-        attendance_id: 451,
-        govern_id: 132,
-        govName: "洛龙区委通讯录",
-        shift_id: 0,
-        work_time: "0",
-        state: true,
-        state_name: "没有排班信息",
-        startWorkTime: "16:17 已打卡",
-        offWorkTime: "16:51 已打卡",
-        isOnlyStartWork: false
-      },
-      {
-        attendance_id: 446,
-        govern_id: 6558,
-        govName: "洛阳市工业和信息化局",
-        shift_id: 112,
-        work_time: "0.0",
-        state: false,
-        state_name: "打卡异常",
-        startWorkTime: "16:17 已打卡",
-        offWorkTime: "16:51 已打卡",
-        isOnlyStartWork: true
-      },
-      {
-        attendance_id: 447,
-        govern_id: 6646,
-        govName: "郑州良政数据科技有限公司",
-        shift_id: 0,
-        work_time: "0",
-        state: true,
-        state_name: "没有排班信息",
-        startWorkTime: "16:17 已打卡",
-        offWorkTime: "16:51 已打卡",
-        isOnlyStartWork: false
-      },
-      {
-        attendance_id: 448,
-        govern_id: 5192,
-        govName: "洛阳市通讯录",
-        shift_id: 0,
-        work_time: "0",
-        state: true,
-        state_name: "没有排班信息",
-        startWorkTime: "16:17 已打卡",
-        offWorkTime: "16:51 已打卡",
-        isOnlyStartWork: false
-      },
-      {
-        attendance_id: 450,
-        govern_id: 6927,
-        govName: "市商务局通讯录",
-        shift_id: 0,
-        work_time: "0",
-        state: true,
-        state_name: "没有排班信息",
-        startWorkTime: "16:17 已打卡",
-        offWorkTime: "16:51 已打卡",
-        isOnlyStartWork: false
-      },
-      {
-        attendance_id: 457,
-        govern_id: 6650,
-        govName: "市文化广电和旅游局",
-        shift_id: 0,
-        work_time: "0",
-        state: true,
-        state_name: "没有排班信息",
-        startWorkTime: "16:17 已打卡",
-        offWorkTime: "16:51 已打卡",
-        isOnlyStartWork: false
-      }
-    ],
-    "checkTimeStr": "16:51"
+  "name": "pratice",
+  "version": "1.0.0",
+  "description": "js语法demo",
+  "main": "n",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "totalCount": null,
-  "token": null,
-  "bookmarkUrl": null
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parade0393/pratice.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parade0393/pratice/issues"
+  },
+  "homepage": "https://github.com/parade0393/pratice#readme",
+  "devDependencies": {
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.3"
+  },
+  "dependencies": {}
 }
