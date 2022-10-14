@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+    <script src="./js/v3.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<template id="parade">
+    <h2>{{message}}</h2>
+</template>
+<script>
+    Vue.createApp({
+        template:"#parade",
+        data:function (){
+            return{
+                message:"hello World"
+            }
+        }
+    }).mount("#app")
+</script>
+</body>
+</html>

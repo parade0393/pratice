@@ -10,7 +10,6 @@ let circle = {
 let apple = {
     name: "苹果",
     color: "red",
-    // weight:23
 };
 let orangeDrink = {
     name: "句子",
@@ -27,3 +26,33 @@ let orangeDrink = {
 };
 console.log(orangeDrink.arr[2].name);
 console.log(orangeDrink.weight);
+//像这种key和value的类型都确定的可以使用索引类型
+const frontLanguage = {
+    0: "HTML",
+    1: "CSS",
+    2: "JavaScript",
+    3: "Vue",
+};
+const add = (n1, n2) => n1 + n2;
+function calc(n1, n2, calcFn) {
+    return calcFn(n1, n2);
+}
+calc(20, 30, add);
+const some = {
+    name: "pa",
+    age: 12
+};
+window.grade = 124;
+const info = {
+    name: "pa",
+    age: 32,
+    height: 1.7,
+    address: "北京"
+};
+const p = info; //这样写可以，把一个引用赋值给一个变量时，会进行freshness，除了多余的变量，剩下的符合类型就可以
+// const  p1:IPerson = {//直接以字面量的形式赋值不可以,字面类赋值必须和类型的变量一摸一样
+//     name:"pa",
+//     age:32,
+//     height:1.7,
+//     address:"北京"
+// }

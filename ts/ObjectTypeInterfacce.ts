@@ -55,5 +55,74 @@ let orangeDrink:Drink = {
 console.log(orangeDrink.arr[2].name)
 console.log(orangeDrink.weight)
 
+//接口声明了索引类型，代表key只能是number类型，值只能是string类型
+interface IndexLanguage{
+    [index:number]:string//索引签名
+}
+
+//像这种key和value的类型都确定的可以使用索引类型
+const frontLanguage:IndexLanguage = {
+    0:"HTML",
+    1:"CSS",
+    2:"JavaScript",
+    3:"Vue",
+}
+
+//可调用的接口，可当作函数使用
+interface CalcFn{
+    (n1:number,n2:number):number//这是一个函数
+}
+
+const add:CalcFn = (n1,n2)=> n1+n2
+
+function calc(n1:number,n2:number,calcFn:CalcFn) {
+    return calcFn(n1,n2)
+}
+calc(20,30,add)
+
+interface ISwim{
+    swimming:()=>void
+}
+
+interface IFly{
+    flying:()=>void
+}
+type MyType1 = ISwim | IFly//可以是其中任意一个类型
+type  MyType2 = ISwim & IFly//必须同时是两个类型
+
+interface OneType {
+    name:string
+}
+interface OneType{
+    age:number
+}
+const some:OneType = {
+    name:"pa",
+    age:12
+}
+
+interface Window {
+    grade:number
+}
+window.grade = 124
+interface IPerson{
+    name:string,
+    age:number,
+    height:number
+}
+const  info = {
+    name:"pa",
+    age:32,
+    height:1.7,
+    address:"北京"
+}
+const p:IPerson = info//这样写可以，把一个引用赋值给一个变量时，会进行freshness，除了多余的变量，剩下的符合类型就可以
+// const  p1:IPerson = {//直接以字面量的形式赋值不可以,字面类赋值必须和类型的变量一摸一样
+//     name:"pa",
+//     age:32,
+//     height:1.7,
+//     address:"北京"
+// }
+
 
 

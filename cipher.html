@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>加密</title>
+    <script type="text/javascript" src="./js/crypto.js"></script>
+</head>
+<body>
+
+<script>
+    //首先加密肯定是要有密钥的，自然解密也需要密钥
+    let qwe = "4000123012zwt1q2";
+    let asd = "q1w2e3r4t5y6u7i8";
+
+    let str = "lnUsqFPjscXlHxe2";
+    //转成字节数组 十六位十六进制数作为密钥
+    let key = CryptoJS.enc.Utf8.parse(qwe)
+    //十六位十六进制数作为密钥偏移量
+    let iv = CryptoJS.enc.Utf8.parse(asd)
+    //我的项目中这里需要解密的字符串不需先Base64解码了，而java需要先解码，这里也摸索了好久
+    let decrypt = CryptoJS.AES.decrypt(str,key,{
+        iv:iv,
+        mode:CryptoJS.mode.CBC,
+        padding:CryptoJS.pad.ZeroPadding//后两个参数一定要正确
+    });
+    let decryptedStr = decrypt.toString(CryptoJS.enc.Utf8);
+    console.log(JSON.parse(decryptedStr))
+</script>
+</body>
+</html>
