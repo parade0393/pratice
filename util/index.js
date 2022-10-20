@@ -12,8 +12,8 @@ function getParamByUrl(url,name) {
 function keepTwoDecimalFull(num) {
     let result = parseFloat(num);
     if (isNaN(result)) {
-        alert('传递参数错误，请检查！');
-        return false;
+        return "";
+        // throw new Error('传递参数错误，请检查！')
     }
     result = Math.round(num * 100) / 100;
     let s_x = result.toString(); //将数字转换为字符串
