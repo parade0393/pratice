@@ -20,19 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe51c81e-9977-4a55-a849-5492d2b65f45" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Vue/vue-template.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cipher.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demo/dialog.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js/crypto.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ts/AnyType.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ts/otherType.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/regex/commonReg.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/regex/test.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ts/ArrayType.js" beforeDir="false" afterPath="$PROJECT_DIR$/ts/ArrayType.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ts/ArrayType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts/ArrayType.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ts/ObjectTypeInterfacce.js" beforeDir="false" afterPath="$PROJECT_DIR$/ts/ObjectTypeInterfacce.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ts/ObjectTypeInterfacce.ts" beforeDir="false" afterPath="$PROJECT_DIR$/ts/ObjectTypeInterfacce.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/util/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,9 +34,9 @@
       <list>
         <option value="package.json" />
         <option value="tsconfig.json" />
+        <option value="TypeScript File" />
         <option value="JavaScript File" />
         <option value="HTML File" />
-        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -276,6 +266,7 @@
       <workItem from="1664935284605" duration="1734000" />
       <workItem from="1665370250211" duration="1771000" />
       <workItem from="1665712341528" duration="253000" />
+      <workItem from="1666357969592" duration="1179000" />
     </task>
     <task id="LOCAL-00001" summary="Vue指令">
       <created>1650757501741</created>
