@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>宽高比</title>
+</head>
+<!--
+对于margin和padding来说，任意方向的百分比都是相对于父容器的宽度计算的，这可以让我们轻松实现固定比例的块级容器
+-->
+<style>
+    body{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .parent{
+        width: 30%;/* 父元素宽度是百分比，子元素使用padding值实现宽高固定比例的效果 */
+        height: 300px;
+    }
+    .child{
+        padding: 50%;/* 每一个方向的padding值都是父容器宽度的一半 */
+        background-color: #8e44ad;
+    }
+    .img{
+        padding: 100% 0 0;
+        background-size: cover;
+        background-image: url("../images/1.jpg");
+    }
+    .img-container{
+        padding: 50% 0 0;/* 实现一个宽高比为 2:1的容器 */
+        position: relative;
+    }
+    .parent-img{
+        /*图片实现固定比例*/
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<body>
+<div class="parent">
+    <div class="child">
+
+    </div>
+</div>
+<div class="parent">
+    <div class="img"></div>
+</div>
+<div class="parent">
+   <div class="img-container">
+       <img class="parent-img" src="../images/1.jpg" alt="">
+   </div>
+</div>
+</body>
+</html>
