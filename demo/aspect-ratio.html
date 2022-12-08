@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>宽高比</title>
+</head>
+<!--
+对于margin和padding来说，任意方向的百分比都是相对于父容器的宽度计算的，这可以让我们轻松实现固定比例的块级容器
+-->
+<style>
+    body{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .parent{
+        width: 30%;/* 父元素宽度是百分比，子元素使用padding值实现宽高固定比例的效果 */
+        height: 300px;
+    }
+    .child{
+        padding: 50%;/* 每一个方向的padding值都是父容器宽度的一半 */
+        background-color: #8e44ad;
+    }
+    .img{
+        padding: 100% 0 0;
+        background-size: cover;
+        background-image: url("../images/1.jpg");
+    }
+    .img-container{
+        padding: 50% 0 0;/* 实现一个宽高比为 2:1的容器 */
+        position: relative;
+    }
+    .parent-img{
+        /*图片实现固定比例*/
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+/*
+但，有时候，图片宽度并不是100%容器的，例如，图片宽度50%容器宽度，图片高宽比4:3，此时，CSS垂直方向百分比就666了，如下：
+.img-box {
+    padding: 0 50% 66.66% 0;
+}
+宽度是父容器宽度的一半，高度是宽度的4/3的66.66%
+
+*/
+</style>
+<body>
+<div class="parent">
+    <div class="child">
+
+    </div>
+</div>
+<div class="parent">
+    <div class="img"></div>
+</div>
+<div class="parent">
+   <div class="img-container">
+       <img class="parent-img" src="../images/1.jpg" alt="">
+   </div>
+</div>
+</body>
+</html>
