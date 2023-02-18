@@ -7,6 +7,7 @@
     <style>
         .container{
             background-color: #e74c3c;
+            display: flex;
         }
     </style>
     <script src="./util/index.js"></script>
@@ -14,19 +15,15 @@
 <body>
 
 <div class="container">
-    <p>大热</p>
-    <p>大热</p>
-    <p>大热</p>
-    <p>大热</p>
-    <p>大热</p>
-    <p>大热</p>
-    <p>大热</p>
+   <span>热</span>
+   <span>热哈</span>
+   <span>热地方</span>
+   <span>热杜甫的</span>
 </div>
 
 <script>
-    console.log(parseTime("2022-12-01T00:00:00.000+08:00","{y}-{m}-{d}"))
-    // console.log(new Date((new Date("2022-12-01T00:00:00.000+08:00").getTime()+8*3600*1000)))
-    // console.log(parseTime("1995-12-17T03:24:00","{y}-{m}-{d}"))
+   const {default:root,index=0} = {default:12}
+   console.log(root)
 </script>
 </body>
 

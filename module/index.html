@@ -7,19 +7,28 @@
 </head>
 <body>
 <!--
+通常一个文件就是一个模块，有自己的作用域，只向外暴露特定的变量和函数
 模块化演进史：
 面对模块化方案：我们需要关注两点：①：如何导出；②：如何导入
 1、浏览器端
     1.开始没有模块化
     2.AMD/CMD--CMD推崇依赖就近  AMD推崇依赖前置
     刚开始有了一种模块化解决方案require.js---这种方案使用的多了产生了AMD规范(Asynchronous Module Definition)-异步模块定义规范
-    同时有另外一种模块解决方案SeaJs-这种方案的普及产生了CMD规范(Common Module Definition)
+    同时有另外一种模块解决方案SeaJs-这种方案的普及产生了CMD规范(Common Module Definition)--通用模块定义规范
+    3.AMD
+        AMD规范采用异步方式加载模块，模块的加载不影响它后面语句的运行。所有依赖这个模块的语句，都定义在一个回调函数中，等到加载完成之后，这个回调函数才会运行
+        入口文件使用require引入模块，其他模块使用define定义模块
+        依赖必须一开始就写好
+    4.CMD
+        依赖可以就近写
+        使用exports或者module.exports导出，exports是module.exports的一个应用
+        导入就使用define的第一个参数require进行导入
 2.服务器端：
 随着node的诞生，服务器端的模块规范common.js被创建出来
-导出用module.exports 导入用require
-require是运行时调用，所以编译期间不会报错 运行js文件使用node命令  node 文件名
-commonJs规范仅定义了exports,但exports有一个问题，所以module.exports被创建了出来 被成为commonJs2
-每个文件都是一个模块,每个模块都有一个module对象，这个module对象的exports属性用来导出接口
+1. 导出用module.exports 导入用require
+2. require是运行时调用，所以编译期间不会报错 运行js文件使用node命令  node 文件名
+3. commonJs规范仅定义了exports,但exports有一个问题，所以module.exports被创建了出来 被成为commonJs2,每个文件都是一个模块,每个模块都有一个module对象，这个module对象的exports属性用来导出接口
+4. 验证common.js可以直接直接编写js文件，使用node命令执行js文件进行验证
 3.webpack
 require.context() 是webpack的api 参考连接 https://www.jianshu.com/p/c894ea00dfec
 还有require('path')未了解
@@ -46,7 +55,8 @@ webpack使用module.exports导出的也可以使用import导入?
     })
 </script>
 </body>
-<script data-main="./js/main" src="./js/require.js"></script>
+<!--AMD规范-->
+<script data-main="./js/main" src="AMD/require.js"></script>
 <!--
 data-main属性的作用是，指定网页程序的主模块。在上例中，就是js目录下面的main.js，这个文件会第一个被require.js加载。由于require.js默认的文件后缀名是js，所以可以把main.js简写成main。
 -->

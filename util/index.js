@@ -15,6 +15,7 @@ function getParamByUrl(url, name) {
     }
 }
 
+//保留两位小数
 function keepTwoDecimalFull(num) {
     let result = parseFloat(num);
     if (isNaN(result)) {
@@ -88,6 +89,37 @@ function parseTime(time, pattern) {
         return value || 0
     })
     return time_str
+}
+
+/**
+ * 构造分页数据
+ * @param page 当前页码
+ * @param total 总页码
+ * @param show 当前页码前后最多显示的页码的数量
+ * @returns {string} ,分割的字符串
+ */
+function showPages (page, total, show) {
+    var str = '';
+    if (total <= show * 2 +1){
+        for (var i = 1;i<=total;i++){
+            str = str + "," +i;
+        }
+        return  str.trim().substr(1)
+    }
+    if (page < show + 1) {
+        for (var i = 1; i <= show * 2 + 1; i++) {
+            str = str + ',' + i;
+        }
+    } else if (page > total - show) {
+        for (var i = total - show * 2; i <= total; i++) {
+            str = str + ',' + i;
+        }
+    } else {
+        for (var i = page - show; i <= page + show; i++) {
+            str = str + ',' + i;
+        }
+    }
+    return str.substr(1).trim();
 }
 
 
