@@ -1,30 +1,60 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"
+    />
     <title>Title</title>
-    <style>
-        .container{
-            background-color: #e74c3c;
-            display: flex;
+  </head>
+  <body>
+    <div class="container"></div>
+
+    <script>
+      let activeEffect;
+      function effect(fn) {
+        const effecFn = () => {
+          activeEffect = effecFn;
+          fn();
+        };
+      }
+      const data = { text: "hell world" };
+      const bucket = new WeakMap();
+      const obj = new Proxy(data, {
+        get(target, key) {
+          track(target, key);
+          return target[key];
+        },
+        set(target, key, newVal) {
+          target[key] = newVal;
+          trigger(target, key);
+        },
+      });
+
+      effect(() => {
+        document.querySelector(".container").innerText = obj.text;
+      });
+
+      function track(target, key) {
+        if (!activeEffect) return target[key];
+        let depsMap = bucket.get(target);
+        if (!depsMap) {
+          bucket.set(target, (depsMap = new Map()));
         }
-    </style>
-    <script src="./util/index.js"></script>
-</head>
-<body>
+        let deps = depsMap.get(key);
+        if (!deps) {
+          depsMap.set(key, (deps = new Set()));
+        }
+        deps.add(activeEffect);
+      }
 
-<div class="container">
-   <span>热</span>
-   <span>热哈</span>
-   <span>热地方</span>
-   <span>热杜甫的</span>
-</div>
-
-<script>
-   const {default:root,index=0} = {default:12}
-   console.log(root)
-</script>
-</body>
-
+      function trigger(target, key) {
+        const depsMap = bucket.get(target);
+        if (!depsMap) return;
+        const effects = depsMap.get(key);
+        effects && effects.forEach((fn) => fn());
+      }
+    </script>
+  </body>
 </html>
