@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var str = "<html><head><style>p{margin-top:0pt;margin-bottom:1pt;}p.X1{text-align:justified;}span.X1{font-family:'Calibri';font-size:10.0pt;}p.X2{margin-top:17.0pt;margin-bottom:16.5pt;}span.X2{font-size:22.0pt;font-weight:bold;}</style></head><body><div style=\"margin-bottom:72.0pt;margin-top:72.0pt;margin-left:90.0pt;margin-right:90.0pt;width:595pt\"><p class=\"X1 X2\" style=\"text-align:center;white-space:pre-wrap;\"><span class=\"X1 X2\">测试室</span></p><p>二十多度所多萨达萨达所多所多所多所多所多所多所多所多所多所多所多所多所多所多所多所多所多所多所多所多所多所多所多所多所多所多所多所多所多所多撒大大大大大大大大大大大多多多多多多多多多多多多多多多多多多多多多多多多多多多多多但事实上所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所所<span id=\"_GoBack\"/></p></div></body></html>";
+
+    var reg = /width:(\d)+[.]*(\d)*\s*;/g
+    // reg = /width:(\d)+[.]*(\d)*[\s\S]*;/g
+    reg = /;?width:\s*(\d)+[.]*(\d)*[\w]*;?/g
+    console.log(str.replace(reg,""))
+</script>
+</body>
+</html>
