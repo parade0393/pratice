@@ -122,5 +122,74 @@ function showPages (page, total, show) {
     return str.substr(1).trim();
 }
 
+/**
+ * 判断是否为空
+ * @param value 任何值
+ * @param includeZero {boolean} 默认值false，0会被认为是真值
+ * @returns {boolean} 为空则为true
+ */
+function  isEmpty(value,includeZero=false){
+  if (value == null) return  true;
+  if (typeof value === 'boolean') return value;
+
+  if (typeof value === 'number'){
+    if (!includeZero){
+      if (value === 0){
+        return false
+      }
+    }
+    return !value;
+  }
+
+  if (value instanceof Error) return true;
+
+  switch (Object.prototype.toString.call(value)) {
+    //string
+    case '[object String]':
+      if ('undefined' === value.toLowerCase()) return true;
+      if ('nan' === value.toLowerCase()) return true;
+      return !value.length;
+      //array
+    case '[object Array]':
+      return !value.length;
+
+      //Map or Set or File
+    case '[object File]':
+    case ['object Map']:
+    case '[object Set]':
+      return !value.size
+    case ['object object']:
+      return !Object.keys(value).length
+  }
+
+}
+
+/**
+ *
+ * @param {Array} list  原始扁平数组
+ * @param {String} cIdName 代表孩子节点的属性名称
+ * @param {String} pIdName 代表父节点的属性名称
+ * @param {String} treeFieldName 返回的树形数据的子节点的属性名称
+ * @param  rootPidValue 代表根节点的属性值
+ * @returns res JSON树形机构数组
+ */
+function convertPlatListToTreeData(list,cIdName,pIdName,treeFieldName,rootPidValue = null) {
+  const res = []
+  const map = list.reduce((res,v) => (res[v[cIdName]] = v,res),{})
+  for (let item of list) {
+    if (item[pIdName] === rootPidValue){
+      res.push(item)
+      continue
+    }
+    if (item[pIdName] in map){//找到item的父元素
+      const parent = map[item[pIdName]]//
+      parent[treeFieldName] = parent[treeFieldName] || [] //父元素里添加子元素
+      parent[treeFieldName].push(item)//父元素里添加子元素
+
+    }
+  }
+  return res
+}
+
 
 
