@@ -33,11 +33,31 @@
      background: red;
    }
 
+    .title1{
+      padding: 16px;
+      margin: 16px;
+      background: #f1c40f;
+    }
+    .title1 h1::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 50px;
+      background: red;
+      border-radius: 4px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
   </style>
 </head>
 <body>
 <div class="stripe">
   <p>文字左侧竖条</p>
+</div>
+
+<div class="title1">
+  <h1 class="title-h1">页面标题</h1>
 </div>
 
 </body>

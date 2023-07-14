@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>宽高比</title>
+    <title></title>
 </head>
 <!--
 对于margin和padding来说，任意方向的百分比都是相对于父容器的宽度计算的，这可以让我们轻松实现固定比例的块级容器
@@ -21,6 +21,7 @@
         background-color: #8e44ad;
     }
     .img{
+      /* 背景是充满整个盒子的 */
         padding: 100% 0 0;
         background-size: cover;
         background-image: url("../images/1.jpg");
@@ -30,7 +31,7 @@
         position: relative;
     }
     .parent-img{
-        /*图片实现固定比例*/
+        /*图片实现固定比例这里只所以要用定位是因为父容器使用了padding实现了固定比例的容器，所以容器必须脱离文档流才能占满容器*/
         position: absolute;
         left: 0;
         top: 0;

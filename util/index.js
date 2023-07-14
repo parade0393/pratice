@@ -39,6 +39,11 @@ function keepTwoDecimalFull(num) {
     return s_x;
 }
 
+//去除字符串前后以及中间可能出现的空格
+function removeWhiteSpace(str){
+  return str.replace(/^\s+|\s+$/g, '').replace(/\s+/g, '');
+}
+
 function isValidDate(date) {
     return date instanceof Date && !isNaN(date.getTime())
 }
@@ -173,22 +178,29 @@ function  isEmpty(value,includeZero=false){
  * @param  rootPidValue 代表根节点的属性值
  * @returns res JSON树形机构数组
  */
-function convertPlatListToTreeData(list,cIdName,pIdName,treeFieldName,rootPidValue = null) {
-  const res = []
-  const map = list.reduce((res,v) => (res[v[cIdName]] = v,res),{})
-  for (let item of list) {
-    if (item[pIdName] === rootPidValue){
-      res.push(item)
-      continue
-    }
-    if (item[pIdName] in map){//找到item的父元素
-      const parent = map[item[pIdName]]//
-      parent[treeFieldName] = parent[treeFieldName] || [] //父元素里添加子元素
-      parent[treeFieldName].push(item)//父元素里添加子元素
-
+function convertPlatListToTreeData(list, cIdName, pIdName, treeFieldName, rootPidValue = null) {
+  const res = [];
+  //(res[v[cIdName]] = v, res),这段代码用了逗号操作符，即（对它的每个操作数求值（从左到右），并返回最后一个操作数的值），剩余的就是reduce的常规操作
+  const map = list.reduce((res, v) => (res[v[cIdName]] = v, res), {});
+  for (const item of list) {
+    if (item[pIdName] === rootPidValue) {
+      res.push(item);
+      continue;
+    }//这一的目的是计算出父级元素
+    //in 操作符 检测属性是否在对象中
+    if (item[pIdName] in map) {//找到item的父元素
+      const parent = map[item[pIdName]];//map里的对象和res里的是同一个对象
+      parent[treeFieldName] = parent[treeFieldName] || [];//父元素里添加子元素这里只是容错，因为刚开始没有这个字段,这时候则赋值为空数组
+      parent[treeFieldName].push(item);
     }
   }
-  return res
+  return res;
+}
+
+function flatten(data) {
+  //{id, title, pid, children = []}，这段代码利用了对象的展开语法
+  return data.reduce((arr, { children = [],...args}) =>
+    arr.concat([{...args}], flatten(children)), []);
 }
 
 

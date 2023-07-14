@@ -6,8 +6,44 @@
     <title>Title</title>
     <style>
         .container{
-            background-color: #e74c3c;
+            /*background-color: #e74c3c;*/
             display: flex;
+        }
+
+        .title {
+          padding: 16px;
+          margin: 16px;
+          background: #f1c40f;
+        }
+
+        .red-bar {
+          width: 5px;
+          height: 100%;
+          background: red;
+          border-radius: 4px;
+          float: left;
+          margin-right: 16px;
+        }
+
+        h1 {
+          margin: 0;
+          height: 50px;
+        }
+
+        .title1{
+          padding: 16px;
+          margin: 16px;
+          background: #f1c40f;
+        }
+        .title1 h1::before {
+          content: '';
+          display: inline-block;
+          width: 5px;
+          height: 50px;
+          background: red;
+          border-radius: 4px;
+          margin-right: 10px;
+          vertical-align: middle;
         }
     </style>
     <script src="./js/lodash.js"></script>
@@ -20,12 +56,27 @@
    <span>热哈</span>
    <span>热地方</span>
    <span>热杜甫的</span>
+  <canvas id="mycanvas"></canvas>
+</div>
+
+<div class="title">
+  <h1>
+    <div class="red-bar"></div>
+    页面标题
+  </h1>
+</div>
+
+<div class="title1">
+  <h1 class="title-h1">页面标题</h1>
 </div>
 
 <script>
-   const {default:root,index=0} = {default:12}
-   console.log(root)
-   _.isEmpty()
+  let list = [{age:23}].map(e => ({name:"paeade",count:1,...e}))
+  console.log(list)
+  const url = "http://api.zwtgov.com/Html/seals/index.html?html_version=202108111150?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ7XCJjbGllbnRDYXRlZ29yeVwiOlwiZGVmYXVsdFwiLFwiY2xpZW50SWRcIjpcImRlZmF1bHRcIixcImxvZ2luVGltZVwiOjE2ODcxNDU3MTU0ODYsXCJyb2xlXCI6XCJhZG1pblwiLFwic2VydmVySWRcIjpcIjAwMTYzRTA2MjBDNC0yMkZGQzY1QTIyRkI0REVCODREMkFBQkMzRkUwQkFFOVwiLFwidXNJZFwiOjQzNDQsXCJ1c2VyTmFtZVwiOlwi5LuY6Zu35b2sXCJ9IiwiaXNzIjoiYXV0aDAiLCJleHAiOjE2OTc3NTA1MTUsImlhdCI6MTY4NzE0NTcxNX0.8NvIZe4w3ALHQreXHckCu9LAA24YEfodhmhoCL2NMsQ&mobile=13703937803&govId=6927";
+  const token = getParamByUrl(url,'token')
+  console.log("token",token)
+  console.log(removeWhiteSpace(" hello World! Hi "))
 </script>
 </body>
 
