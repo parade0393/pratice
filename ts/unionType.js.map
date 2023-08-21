@@ -1,1 +1,1 @@
-{"version":3,"file":"unionType.js","sourceRoot":"","sources":["unionType.ts"],"names":[],"mappings":""}
+{"version":3,"file":"unionType.js","sourceRoot":"","sources":["unionType.ts"],"names":[],"mappings":"AAAA,IAAI,QAAwB,CAAA,CAAA,mCAAmC;AAC/D,QAAQ,GAAG,OAAO,CAAA,CAAA,4BAA4B;AAC9C,OAAO,CAAC,GAAG,CAAC,QAAQ,CAAC,MAAM,CAAC,CAAA;AAC5B,QAAQ,GAAG,CAAC,CAAA,CAAA,4BAA4B;AACxC,qCAAqC;AACrC,eAAe;AACf,gEAAgE;AAEhE,IAAI,OAAoB,CAAA,CAAA,+BAA+B;AACvD,IAAI,CAAC,GAAU,EAAE,CAAA"}

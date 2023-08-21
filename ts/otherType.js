@@ -1,21 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const person = {
+var person = {
     name: '123'
 };
-const p = {
+var p = {
     name: ''
 };
 console.log(p.name);
-class Grade {
-    constructor(score) {
+var Grade = /** @class */ (function () {
+    function Grade(score) {
         this.score = score;
     }
-}
-const g = {
+    return Grade;
+}());
+var g = {
     score: 23
 };
-const gr = {
+var gr = {
     score: 23
 };
-const gn = new Grade(45);
+var gn = new Grade(45);
+//# sourceMappingURL=otherType.js.map
