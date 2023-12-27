@@ -236,5 +236,67 @@ function flatten(data) {
     arr.concat([{...args}], flatten(children)), []);
 }
 
+/**
+ * 把开始时间和结束时间转换成如下格式的数据
+ * {
+ *   "2023/12/21":[{"data":data,"range":[12:12,24:00]}],
+ *   2023/12/22":[{"data":data,"range":[00:00,10:02]}]
+ * }
+ * @param startTimes 2023-12-21 12:12:12
+ * @param endTimes 2023-12-22 10:02:12
+ * @param data 额外的数据
+ */
+function convertToTimeArray(startTimes, endTimes,data) {
+  const result = {};
+
+  // 将字符串形式的日期转换为 Date 对象
+  const startDate = new Date(startTimes);
+  const endDate = new Date(endTimes);
+
+  // 循环遍历开始日期到结束日期之间的每一天
+  while (startDate <= endDate) {
+    console.log(startDate.toLocaleDateString())
+    const currentDate = startDate.toLocaleDateString().split('/')
+      .map((part) => part.padStart(2, '0')) // 确保月份和日期是两位数
+      .join('/'); // 获取当前日期的字符串形式
+
+    // 如果当前日期不在结果中，添加该日期
+    if (!result[currentDate]) {
+      result[currentDate] = [];
+
+    }
+
+    // 计算当前日期的时间段
+    const startTime = startDate.getHours().toString().padStart(2,'0') + ':' + startDate.getMinutes().toString().padStart(2,'0');
+    const endTime =
+      startDate.getDate() === endDate.getDate() && startDate.getMonth() === endDate.getMonth()
+        ? endDate.getHours().toString().padStart(2,'0') + ':' + endDate.getMinutes().toString().padStart(2,'0')
+        : '24:00';
+
+    // 添加时间段到当前日期
+    if (startTime !== endTime){
+      result[currentDate][0] = {}
+      result[currentDate][0]['range'] = [startTime,endTime];
+      result[currentDate][0]['data'] = data;
+    }else {
+      delete result[currentDate]
+    }
+
+
+    // 将日期增加一天
+    startDate.setDate(startDate.getDate() + 1);
+    startDate.setHours(0, 0, 0, 0);
+  }
+
+  return result;
+}
+
+// 示例用法
+const startTimes = "2023-12-29 02:00:00";
+const endTimes = "2024-01-02 00:00:00";
+const result = convertToTimeArray(startTimes, endTimes,12);
+console.log(result);
+
+
 
 
