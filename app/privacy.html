@@ -99,7 +99,23 @@
       </ul>
     </li>
     <li>
-      3.当您通过相机拍照或录像功能来设置头像或上传图片、视频文件时，我们将申请使用你的相机、相册权限，这是实现该等功能所必需的。
+      3.当您通过相机拍照或录像功能来设置头像或扫码或上传图片、视频文件时，我们将申请使用你的相机、相册权限，这是实现该等功能所必需的。
+    </li>
+    <li>
+      <p>4.自启动或关联启动说明</p>
+      <ul>
+        <li>
+          为确保本应用处于关闭或后台运行状态下可正常接收到客户端推送的广播信息，本应用须使用（自启动）能力，将存在一定频率通过系统发送广播唤醒本应用自启动或关联启动行为，是因实现功能及服务所必要的；当您打开内容类推送消息，在征得您的明确同意后，会跳转打开相关内容。在未征得您同意的情况下，则不会有关联启动
+        </li>
+      </ul>
+    </li>
+    <li>
+      5.获取已安装的应用
+      <ul>
+        <li>
+          我们和第三方mobpush推送sdk会获取已安装的应用，目的为了保证所在的运行环境中没有恶意app存在，给用户提供安全的使用体验；以及mobpush sdk会根据设备上不同APP的活跃情况，整合消息推送的通道资源，目的是为了提高消息送达率以及用户使用情况的统计
+        </li>
+      </ul>
     </li>
     <li>
       上述服务可能需要您在您的设备中向我们授权开启您的位置（GPS）、相机（摄像头）、相册（图片库）以及麦克风等的访问权限，以实现这些服务所涉及的信息的收集和使用。您可以随时在您的手机或设备设置中决定这些权限的开启或关闭。您开启这些权限即代表您授权我们可以收集和使用这些个人信息来实现上述功能，您关闭权限即代表您取消了这些授权，则我们不再继续收集和使用您的个人信息，也无法为您提供上述与这些授权所对应的功能。您关闭权限的决定不会影响此前基于您的授权所进行的个人信息的处理。
@@ -167,14 +183,89 @@
   <p>为了推送、分享、投屏、登录、预防恶意程序及反作弊、提高服务安全性、保障运营质量及效率等目的，我们的产品可能会集成第三方的SDK或其他类似的应用程序，可能会收集您的地理位置、设备信息（包含Android
     ID、MAC地址、国际移动设备识别码（IMEI）、iOS广告标识符（IDFA)、匿名设备标识符(OAID)、国际移动用户识别码（IMSI））、手机号码、应用列表信息、运营商信息、网络信息、服务日志信息等。</p>
 
-  <p style="margin-top: 20px;">SDK简称：友盟+</p>
-  <p>合作方：友盟同欣（北京）科技有限公司、北京锐讯灵通科技有限公司</p>
-  <p>合作目的：用于提供客户端内容分享、消息推送服务</p>
+  <p style="margin-top: 20px;">SDK简称：MobPush SDK</p>
+  <p>合作方：上海掌之淘信息技术有限公司</p>
+  <p>合作目的：根据用户机型，为用户提供通知信息推送功能</p>
   <p>个人信息收集方式：嵌入第三方SDK，SDK收集传输个人信息</p>
+  <p>可能调用的权限：网络状态权限、访问网络权限</p>
   <p>个人信息收集范围：采集设备序列号、Android ID、设备信息（IMEI、MAC地址、IDFA、OpenUDID、GUID、SIM卡IMSI、地理位置等）</p>
-  <p style="margin-bottom: 20px;">您可以访问<a href="https://www.umeng.com/policy">https://www.umeng.com/policy</a>了解友盟+隐私权政策
+  <p style="margin-bottom: 20px;">您可以访问<a href="https://policy.zztfly.com/sdk/mobpush/privacy">https://policy.zztfly.com/sdk/mobpush/privacy</a>了解MobPush隐私权政策
   </p>
 
+  <p style="margin-top: 20px;">SDK简称：华为推送SDK</p>
+  <p>合作方：华为软件技术有限公司</p>
+  <p>合作目的：根据用户机型，为用户提供通知信息推送功能</p>
+  <p>可能调用的权限：网络状态权限、访问网络权限</p>
+  <p>个人信息收集方式：嵌入第三方SDK，SDK收集传输个人信息</p>
+  <p>个人信息收集范围：应用信息、设备信息（设备的硬件信息、系统基本信息和系统设置）、应用进程信息、IP地址、BSSID、WIFI信息、Android ID</p>
+  <p style="margin-bottom: 20px;">您可以访问<a href="https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/sdk-data-security-0000001050042177
+">https://developer.huawei.com/consumer/cn/doc/development/HMSCore-Guides/sdk-data-security-0000001050042177</a>了解隐私权政策
+  </p>
+
+
+  <p style="margin-top: 20px;">SDK简称：小米推送SDK</p>
+  <p>合作方：北京小米移动软件有限公司</p>
+  <p>合作目的：根据用户机型，为用户提供通知信息推送功能</p>
+  <p>个人信息收集方式：嵌入第三方SDK，SDK收集传输个人信息</p>
+  <p>可能调用的权限：问网络状态、获取设备信息、写入设备存储</p>
+  <p>个人信息收集范围：设备标识(OAID、加密的Android ID)、推送消息内容、设备信息(设备厂商、型号、归属地、运营商名称等)、通知栏设置、单个应用信息</p>
+  <p style="margin-bottom: 20px;">您可以访问<a href="https://dev.mi.com/console/doc/detail?pId=1822">https://dev.mi.com/console/doc/detail?pId=1822</a>了解隐私权政策
+  </p>
+
+
+  <p style="margin-top: 20px;">SDK简称：魅族推送SDK</p>
+  <p>合作方：珠海星纪魅族信息技术有限公司</p>
+  <p>合作目的：根据用户机型，为用户提供通知信息推送功能</p>
+  <p>个人信息收集方式：嵌入第三方SDK，SDK收集传输个人信息</p>
+  <p>可能调用的权限：允许应用发送通知、访问网络信息、访问网络</p>
+  <p>个人信息收集范围：设备相关信息（手机品牌、手机型号、系统版本、系统语言，以及设备标识符 PUSHID）和应用信息、推送状态</p>
+  <p style="margin-bottom: 20px;">您可以访问<a href="https://open.flyme.cn/docs?id=202">https://open.flyme.cn/docs?id=202</a>了解隐私权政策
+  </p>
+
+  <p style="margin-top: 20px;">SDK简称：魅族推送SDK</p>
+  <p>合作方：珠海星纪魅族信息技术有限公司</p>
+  <p>合作目的：根据用户机型，为用户提供通知信息推送功能</p>
+  <p>个人信息收集方式：嵌入第三方SDK，SDK收集传输个人信息</p>
+  <p>可能调用的权限：允许应用发送通知、访问网络信息、访问网络</p>
+  <p>个人信息收集范围：设备相关信息（手机品牌、手机型号、系统版本、系统语言，以及设备标识符 PUSHID）和应用信息、推送状态</p>
+  <p style="margin-bottom: 20px;">您可以访问<a href="https://open.flyme.cn/docs?id=202">https://open.flyme.cn/docs?id=202</a>了解隐私权政策
+  </p>
+
+  <p style="margin-top: 20px;">SDK简称：VIVO 推送SDK</p>
+  <p>合作方：维沃移动通信有限公司</p>
+  <p>合作目的：根据用户机型，为用户提供通知信息推送功能</p>
+  <p>个人信息收集方式：嵌入第三方SDK，SDK收集传输个人信息</p>
+  <p>可能调用的权限：允许应用发送通知、访问网络信息、访问网络</p>
+  <p>个人信息收集范围：应用基本信息（appid，appkey，应用包名，应用版本号，pushSDK版本）、应用内设备标识符（vpush的regld）、设备的硬件信息（设备类型，如手机，平板等）、系统基本信息（系统类型和系统版本）</p>
+  <p style="margin-bottom: 20px;">您可以访问<a href="https://dev.vivo.com.cn/documentCenter/doc/706">https://dev.vivo.com.cn/documentCenter/doc/706</a>了解隐私权政策
+  </p>
+
+  <p style="margin-top: 20px;">SDK简称：OPUSH SDK</p>
+  <p>合作方：广东欢太科技有限公司</p>
+  <p>合作目的：根据用户机型，为用户提供通知信息推送功能</p>
+  <p>个人信息收集方式：嵌入第三方SDK，SDK收集传输个人信息</p>
+  <p>可能调用的权限：允许应用发送通知、访问网络信息、访问网络</p>
+  <p>个人信息收集范围：应用基本信息（MCS应用包名、应用版本号、OPUSH SDK版本号），应用内设备标识符（RegisterId、appKey、appSecret）</p>
+  <p style="margin-bottom: 20px;">您可以访问<a href="https://open.oppomobile.com/new/developmentDoc/info?id=11229">https://open.oppomobile.com/new/developmentDoc/info?id=11229</a>了解隐私权政策
+  </p>
+
+  <p style="margin-top: 20px;">SDK简称：荣耀推送 SDK</p>
+  <p>合作方：深圳荣耀软件技术有限公司</p>
+  <p>合作目的：根据用户机型，为用户提供通知信息推送功能</p>
+  <p>个人信息收集方式：嵌入第三方SDK，SDK收集传输个人信息</p>
+  <p>可能调用的权限：允许应用发送通知、访问网络信息、访问网络</p>
+  <p>个人信息收集范围：设备信息、设备标识符（AAID、PushToken）</p>
+  <p style="margin-bottom: 20px;">您可以访问<a href="https://developer.hihonor.com/cn/kitdoc?category=%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1&kitId=11002&navigation=guides&docId=sdk-data-security.md">https://developer.hihonor.com/cn/kitdoc?category=%E5%9F%BA%E7%A1%80%E6%9C%8D%E5%8A%A1&kitId=11002&navigation=guides&docId=sdk-data-security.md</a>了解隐私权政策
+  </p>
+
+  <p style="margin-top: 20px;">SDK简称：高德开放平台定位SDK</p>
+  <p>合作方：高德软件有限公司</p>
+  <p>合作目的：根据用户机型，为用户提供通知信息推送功能</p>
+  <p>个人信息收集方式：嵌入第三方SDK，SDK收集传输个人信息</p>
+  <p>可能调用的权限：允许应用发送通知、访问网络信息、访问网络</p>
+  <p>个人信息收集范围：经纬度、设备信息【如IP 地址、GNSS信息、网络类型、WiFi状态、WiFi参数、WiFi列表、SSID、BSSID、基站信息、WiFi信号强度的信息传感器信息（矢量、加速度、压力）、设备信号强度信息】、设备标识信息（IDFA、OAID）、当前应用信息（应用名、应用版本号）、设备参数及系统信息（设备品牌及型号、操作系统、运营商信息、屏幕分辨率）</p>
+  <p style="margin-bottom: 20px;">您可以访问<a href="https://lbs.amap.com/pages/privacy/">https://lbs.amap.com/pages/privacy/</a>了解隐私权政策
+  </p>
 
 
   <p>SDK简称：Bugly线上异常日志收集SDK</p>
@@ -240,11 +331,11 @@
     每个业务功能需要一些基本的个人信息才能得以完成。对于额外收集的个人信息的收集和使用，会以弹窗的方式进行通知，以获得您的授权同意。</p>
   <p>如果您不同意，我们将不再处理相应的个人信息。当您不同意后，不会影响此前基于您的授权而开展的个人信息处理。</p>
   <p>（五）个人信息主体注销账户</p>
-  <p>您随时可注销此前注册的账户，您可以通过以下方式自行操作：在【个人中心】-【账号设置】中注销账号处，按提示进行注销。</p>
+  <p>您随时可注销此前注册的账户，您可以给我们发送邮箱，我们会在3个工作日内进行处理。</p>
   <p>在注销账户之后，我们将停止为您提供产品或服务，并依据您的要求，删除您的个人信息，法律法规另有规定的除外。</p>
   <p>（六）响应您的上述请求</p>
   <p>为保障安全，您可能需要提供书面请求，或以其他方式证明您的身份。我们可能会先要求您验证自己的身份，然后再处理您的请求。</p>
-  <p>我们将在三十天内作出答复。如您不满意，可以通过xhwkhd@news.cn与我们联系。</p>
+  <p>我们将在三十天内作出答复。如您不满意，可以通过zzlzsjyxgs@163.com与我们联系。</p>
   <p>
     对于您合理的请求，我们原则上不收取费用，但对多次重复、超出合理限度的请求，我们将视情收取一定成本费用。对于那些无端重复、需要过多技术手段（例如，需要开发新系统或从根本上改变现行惯例）、给他人合法权益带来风险或者非常不切实际（例如，涉及备份磁带上存放的信息）的请求，我们可能会予以拒绝。</p>
   <p><b>在以下情形中，我们将无法响应您的请求：</b></p>
