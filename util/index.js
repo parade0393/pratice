@@ -163,8 +163,8 @@ function showPages(page, total, show) {
 /**
  * 判断是否为空
  * @param value 任何值
- * @param includeZero {boolean} 默认值false，0会被认为是真值
- * @returns {boolean} 为空则为true
+ * @param includeZero {boolean} 默认值false，默认0会被认为是真值
+ * @returns {boolean} 为空则为true []:true {}:true Map() true Set() true
  */
 function isEmpty(value, includeZero = false) {
   if (value == null) return true;
@@ -180,7 +180,7 @@ function isEmpty(value, includeZero = false) {
   }
 
   if (value instanceof Error) return true;
-
+  let vv = Object.prototype.toString.call(value)
   switch (Object.prototype.toString.call(value)) {
     //string
     case '[object String]':
@@ -193,13 +193,49 @@ function isEmpty(value, includeZero = false) {
 
     //Map or Set or File
     case '[object File]':
-    case ['object Map']:
+    case '[object Map]':
     case '[object Set]':
       return !value.size
     case ['object object']:
       return !Object.keys(value).length
+    case '[object Object]':
+      return !Object.keys(value).length
   }
 
+}
+
+/**
+ * 判断是否为真，默认0为真
+ * @param value
+ * @param includeZero
+ */
+function isTrue(value, includeZero = true){
+  if (typeof value === 'number') {
+    if (includeZero) {
+      if (value === 0) {
+        return true
+      }
+    }
+  }
+  return !!value
+}
+
+/**
+ * 返回想要的真值，默认数字0是真值
+ * @param value
+ * @param includeZero 0是否是真值，默认true
+ * @param defaultValue 当为false时候的默认值
+ * @returns
+ */
+function trueValue(value,includeZero = true,defaultValue = ''){
+  if (typeof value === 'number') {
+    if (includeZero) {
+      if (value === 0) {
+        return value
+      }
+    }
+  }
+  return value || defaultValue
 }
 
 /**
@@ -290,13 +326,6 @@ function convertToTimeArray(startTimes, endTimes, data) {
 
   return result;
 }
-
-// 示例用法
-const startTimes = "2023-12-29 02:00:00";
-const endTimes = "2024-01-02 00:00:00";
-const result = convertToTimeArray(startTimes, endTimes, 12);
-console.log(result);
-
 
 
 
