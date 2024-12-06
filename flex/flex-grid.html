@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex网络布局对齐demo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .grid-container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      padding: 10px;
+    }
+
+    .grid-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 25%; /* 4列布局 */
+      padding: 5px;
+    }
+
+    .grid-item-image {
+      width: 100px;
+      height: 100px;
+      object-fit: cover; /* 保证图片比例 */
+    }
+
+    .grid-item-text {
+      margin-top: 8px;
+      text-align: center;
+      display: -webkit-box;
+      -webkit-line-clamp: 2; /* 限制两行 */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 14px;
+      width: 100px;
+    }
+
+    /* 小屏幕响应式调整 */
+    @media (max-width: 480px) {
+      .grid-item {
+        width: 50%; /* 小屏幕变为2列 */
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="grid-container">
+  <div class="grid-item">
+    <img src="/images/12.jpg" alt="图片1" class="grid-item-image">
+    <div class="grid-item-text">这是一个测试标题文字</div>
+  </div>
+  <div class="grid-item">
+    <img src="/images/12.jpg" alt="图片2" class="grid-item-image">
+    <div class="grid-item-text">这是第二个标题文字</div>
+  </div>
+  <div class="grid-item">
+    <img src="/images/12.jpg" alt="图片3" class="grid-item-image">
+    <div class="grid-item-text">这是第三个较长的标题文字</div>
+  </div>
+  <div class="grid-item">
+    <img src="/images/12.jpg" alt="图片4" class="grid-item-image">
+    <div class="grid-item-text">这是第四个标题</div>
+  </div>
+  <!-- 可以继续添加更多项目 -->
+</div>
+</body>
+</html>
