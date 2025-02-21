@@ -382,6 +382,69 @@ const throttle = (func, wait = 1000, type = 1) => {
   }
 }
 
+/**
+ * 高效合并两个数组，根据指定的唯一标识字段判断是否需要合并
+ *
+ * @param {Array<Object>} arr1 - 第一个数组，包含对象元素
+ * @param {Array<Object>} arr2 - 第二个数组，包含对象元素
+ * @param {Object} [options] - 配置选项
+ * @param {string} [options.idField='id'] - 用作唯一标识的字段名，默认为'id'
+ * @param {boolean} [options.addNonExisting=false] - 是否添加在arr1中不存在的arr2项
+ * @returns {Array<Object>} 合并后的数组
+ *
+ * @example
+ * const arr1 = [{id: 1, name: "p"}];
+ * const arr2 = [{id: 1, age: 12}, {id: 2, name: "q"}];
+ *
+ * // 使用默认配置（以id为唯一标识，不添加不存在的项）
+ * mergeArrays(arr1, arr2); // [{id: 1, name: "p", age: 12}]
+ *
+ * // 使用自定义唯一标识字段
+ * const users1 = [{userId: "a1", name: "Alice"}];
+ * const users2 = [{userId: "a1", email: "alice@example.com"}];
+ * mergeArrays(users1, users2, { idField: "userId" });
+ * // [{userId: "a1", name: "Alice", email: "alice@example.com"}]
+ *
+ * // 添加不存在的项
+ * mergeArrays(arr1, arr2, { addNonExisting: true });
+ * // [{id: 1, name: "p", age: 12}, {id: 2, name: "q"}]
+ */
+function mergeArrays(arr1, arr2, options = {}) {
+  // 设置默认选项
+  const {
+    idField = 'id',
+    addNonExisting = false
+  } = options;
+
+  // 创建一个Map用于存储合并后的结果
+  const mergedMap = new Map();
+
+  // 先将第一个数组的所有项添加到Map中
+  arr1.forEach(item => {
+    if (item && typeof item === 'object' && idField in item) {
+      mergedMap.set(item[idField], { ...item });
+    }
+  });
+
+  // 合并第二个数组的项
+  arr2.forEach(item => {
+    if (item && typeof item === 'object' && idField in item) {
+      const keyValue = item[idField];
+
+      if (mergedMap.has(keyValue)) {
+        // 如果唯一标识已存在，则合并对象属性
+        mergedMap.set(keyValue, { ...mergedMap.get(keyValue), ...item });
+      } else if (addNonExisting) {
+        // 如果设置了addNonExisting选项为true且唯一标识不存在，则直接添加
+        mergedMap.set(keyValue, { ...item });
+      }
+    }
+  });
+
+  // 将Map转换回数组
+  return Array.from(mergedMap.values());
+}
+
 
 
 
