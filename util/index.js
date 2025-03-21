@@ -445,6 +445,153 @@ function mergeArrays(arr1, arr2, options = {}) {
   return Array.from(mergedMap.values());
 }
 
+/**
+ * 通用异步循环处理工具函数
+ * @param {Array} items - 需要处理的参数数组
+ * @param {Function} asyncFn - 处理每个参数的异步函数，接收单个参数并返回Promise
+ * @param {Function} resultHandler - 处理每次异步调用结果的函数，接收(累积结果, 当前结果, 当前索引, 当前项)
+ * @param {*} initialValue - 结果累积的初始值
+ * @param {Object} options - 配置选项
+ * @param {boolean} options.parallel - 是否并行执行，默认为false（串行执行）
+ * @param {number} options.concurrency - 并行时的并发数，默认为Infinity
+ * @param {Function} options.errorHandler - 错误处理函数，接收(错误, 当前项, 当前索引)
+ * @returns {Promise<*>} - 返回累积的最终结果
+ *
+ * 示例
+ *  // 示例1：串行收集结果到数组
+ *    const items = [1, 2, 3, 4, 5];
+ *    const fetchData = async (id) => {
+ *      await new Promise(resolve => setTimeout(resolve, 100));
+ *      return { id, value: id * 10 };
+ *    };
+ *    // 将所有成功的结果收集到数组中
+ *    const results = await processAsync(
+ *      items,
+ *      fetchData,
+ *      (acc, curr) => [...acc, curr],
+ *      []
+ *    );
+ *    console.log(results);
+ *
+ *    // 示例2：并行处理并统计结果
+ *    const numbers = [10, 20, 30, 40, 50];
+ *    const calculate = async (num) => {
+ *      await new Promise(resolve => setTimeout(resolve, Math.random() * 200));
+ *      return num * 2;
+ *    };
+ *
+ *    // 计算所有处理结果的总和
+ *    const sum = await processAsync(
+ *      numbers,
+ *      calculate,
+ *      (acc, curr) => acc + curr,
+ *      0,
+ *      { parallel: true, concurrency: 2 }
+ *    );
+ *    console.log(sum);
+ *
+ *    // 示例3：错误处理
+ *    const urls = ['url1', 'url2', 'invalid-url', 'url4'];
+ *    const fetchUrl = async (url) => {
+ *      if (url === 'invalid-url') throw new Error('Invalid URL');
+ *      await new Promise(resolve => setTimeout(resolve, 100));
+ *      return `Response from ${url}`;
+ *    };
+ *
+ *    const validResponses = await processAsync(
+ *      urls,
+ *      fetchUrl,
+ *      (acc, curr) => [...acc, curr],
+ *      [],
+ *      {
+ *        parallel: true,
+ *        errorHandler: (err, url) => console.log(`Error fetching ${url}: ${err.message}`)
+ *      }
+ *    );
+ *    console.log(validResponses);
+ */
+async function processAsync(
+  items,
+  asyncFn,
+  resultHandler = (acc, curr) => curr,
+  initialValue = undefined,
+  options = {}
+) {
+  const {
+    parallel = false,
+    concurrency = Infinity,
+    errorHandler = (err) => console.error(err)
+  } = options;
+
+  let result = initialValue;
+
+  // 串行执行
+  if (!parallel) {
+    for (let i = 0; i < items.length; i++) {
+      try {
+        const currentResult = await asyncFn(items[i]);
+        result = resultHandler(result, currentResult, i, items[i]);
+      } catch (error) {
+        errorHandler(error, items[i], i);
+      }
+    }
+    return result;
+  }
+
+  // 并行执行（可控制并发数）
+  if (parallel) {
+    // 处理无限制并发的情况
+    if (concurrency === Infinity) {
+      const promises = items.map((item, index) =>
+        asyncFn(item)
+          .then(currentResult => ({ success: true, data: currentResult, index, item }))
+          .catch(error => {
+            errorHandler(error, item, index);
+            return { success: false, index, item };
+          })
+      );
+
+      const results = await Promise.all(promises);
+
+      for (const res of results) {
+        if (res.success) {
+          result = resultHandler(result, res.data, res.index, res.item);
+        }
+      }
+
+      return result;
+    }
+
+    // 处理有限制并发的情况
+    const chunks = [];
+    for (let i = 0; i < items.length; i += concurrency) {
+      chunks.push(items.slice(i, i + concurrency));
+    }
+
+    for (const chunk of chunks) {
+      const promises = chunk.map((item, chunkIndex) => {
+        const index = chunks.indexOf(chunk) * concurrency + chunkIndex;
+        return asyncFn(item)
+          .then(currentResult => ({ success: true, data: currentResult, index, item }))
+          .catch(error => {
+            errorHandler(error, item, index);
+            return { success: false, index, item };
+          });
+      });
+
+      const chunkResults = await Promise.all(promises);
+
+      for (const res of chunkResults) {
+        if (res.success) {
+          result = resultHandler(result, res.data, res.index, res.item);
+        }
+      }
+    }
+
+    return result;
+  }
+}
+
 
 
 
