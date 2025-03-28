@@ -446,115 +446,158 @@ function mergeArrays(arr1, arr2, options = {}) {
 }
 
 /**
- * 通用异步循环处理工具函数
- * @param {Array} items - 需要处理的参数数组
- * @param {Function} asyncFn - 处理每个参数的异步函数，接收单个参数并返回Promise
+ * 通用异步循环处理工具函数 - 用于处理需要循环执行的异步操作并汇总结果
+ *
+ * @param {Array} items - 需要处理的参数数组，每一项将作为主要参数传递给异步函数
+ * @param {Function} asyncFn - 处理每个参数的异步函数，接收(当前项, ...extraArgs)并返回Promise
  * @param {Function} resultHandler - 处理每次异步调用结果的函数，接收(累积结果, 当前结果, 当前索引, 当前项)
- * @param {*} initialValue - 结果累积的初始值
+ * @param {*} initialValue - 结果累积的初始值，作为resultHandler的首次调用时的acc参数
  * @param {Object} options - 配置选项
  * @param {boolean} options.parallel - 是否并行执行，默认为false（串行执行）
- * @param {number} options.concurrency - 并行时的并发数，默认为Infinity
+ * @param {number} options.concurrency - 并行时的并发数，默认为Infinity（无限制）
  * @param {Function} options.errorHandler - 错误处理函数，接收(错误, 当前项, 当前索引)
+ * @param {Array} extraArgs - 传递给异步函数的额外参数，会在每次调用时传入
  * @returns {Promise<*>} - 返回累积的最终结果
- *
  * 示例
- *  // 示例1：串行收集结果到数组
- *    const items = [1, 2, 3, 4, 5];
- *    const fetchData = async (id) => {
- *      await new Promise(resolve => setTimeout(resolve, 100));
- *      return { id, value: id * 10 };
- *    };
- *    // 将所有成功的结果收集到数组中
- *    const results = await processAsync(
- *      items,
- *      fetchData,
- *      (acc, curr) => [...acc, curr],
- *      []
- *    );
- *    console.log(results);
+ * // 示例1：串行收集结果到数组 - 演示带额外参数的基本用法
+ *   const items = [1, 2, 3, 4, 5];
+ *   const fetchData = async (id, apiKey, baseUrl) => {
+ *     // 模拟API调用延迟
+ *     await new Promise(resolve => setTimeout(resolve, 100));
+ *     // 返回结果包含ID和额外参数
+ *     return { id, value: id * 10, apiKey, baseUrl };
+ *   };
  *
- *    // 示例2：并行处理并统计结果
- *    const numbers = [10, 20, 30, 40, 50];
- *    const calculate = async (num) => {
- *      await new Promise(resolve => setTimeout(resolve, Math.random() * 200));
- *      return num * 2;
- *    };
+ *   // 将所有成功的结果收集到数组中，并传递额外参数
+ *   const results = await processAsync(
+ *     items,                              // 要处理的ID数组
+ *     fetchData,                          // 异步处理函数
+ *     (acc, curr) => [...acc, curr],      // 结果累积器：将当前结果添加到数组
+ *     [],                                 // 初始值为空数组
+ *     {},                                 // 无特殊选项
+ *     "my-api-key",                       // 额外参数1：API密钥
+ *     "https://api.example.com"           // 额外参数2：基础URL
+ *   );
+ *   console.log(results);
  *
- *    // 计算所有处理结果的总和
- *    const sum = await processAsync(
- *      numbers,
- *      calculate,
- *      (acc, curr) => acc + curr,
- *      0,
- *      { parallel: true, concurrency: 2 }
- *    );
- *    console.log(sum);
+ *   // 示例2：并行处理并统计结果 - 演示并行处理和数值累积
+ *   const numbers = [10, 20, 30, 40, 50];
+ *   const calculate = async (num, multiplier, offset) => {
+ *     // 模拟随机计算延迟
+ *     await new Promise(resolve => setTimeout(resolve, Math.random() * 200));
+ *     // 使用额外参数进行计算
+ *     return num * multiplier + offset;
+ *   };
  *
- *    // 示例3：错误处理
- *    const urls = ['url1', 'url2', 'invalid-url', 'url4'];
- *    const fetchUrl = async (url) => {
- *      if (url === 'invalid-url') throw new Error('Invalid URL');
- *      await new Promise(resolve => setTimeout(resolve, 100));
- *      return `Response from ${url}`;
- *    };
+ *   // 计算所有处理结果的总和，并传递额外参数
+ *   const sum = await processAsync(
+ *     numbers,                            // 要处理的数字数组
+ *     calculate,                          // 异步计算函数
+ *     (acc, curr) => acc + curr,          // 结果累积器：将当前结果添加到总和
+ *     0,                                  // 初始值为0
+ *     {
+ *       parallel: true,                   // 启用并行处理
+ *       concurrency: 2                    // 最大并发数为2
+ *     },
+ *     2,                                  // 额外参数1：乘数
+ *     5                                   // 额外参数2：偏移量
+ *   );
+ *   console.log(sum);
  *
- *    const validResponses = await processAsync(
- *      urls,
- *      fetchUrl,
- *      (acc, curr) => [...acc, curr],
- *      [],
- *      {
- *        parallel: true,
- *        errorHandler: (err, url) => console.log(`Error fetching ${url}: ${err.message}`)
- *      }
- *    );
- *    console.log(validResponses);
+ *   // 示例3：错误处理 - 演示错误处理和自定义错误回调
+ *   const urls = ['url1', 'url2', 'invalid-url', 'url4'];
+ *   const fetchUrl = async (url, headers, timeout) => {
+ *     // 模拟错误情况
+ *     if (url === 'invalid-url') throw new Error('Invalid URL');
+ *     // 模拟API调用延迟
+ *     await new Promise(resolve => setTimeout(resolve, 100));
+ *     // 返回包含额外参数的结果
+ *     return `Response from ${url} with timeout ${timeout}ms and headers ${JSON.stringify(headers)}`;
+ *   };
+ *
+ *   const validResponses = await processAsync(
+ *     urls,                               // 要处理的URL数组
+ *     fetchUrl,                           // 异步获取函数
+ *     (acc, curr) => [...acc, curr],      // 结果累积器：将当前结果添加到数组
+ *     [],                                 // 初始值为空数组
+ *     {
+ *       parallel: true,                   // 启用并行处理
+ *       // 自定义错误处理函数
+ *       errorHandler: (err, url) => console.log(`Error fetching ${url}: ${err.message}`)
+ *     },
+ *     { Authorization: "Bearer token" },  // 额外参数1：请求头
+ *     5000                                // 额外参数2：超时时间
+ *   );
+ *   console.log(validResponses);
  */
 async function processAsync(
   items,
   asyncFn,
-  resultHandler = (acc, curr) => curr,
-  initialValue = undefined,
-  options = {}
+  resultHandler = (acc, curr) => curr, // 默认只返回当前结果
+  initialValue = undefined,           // 默认初始值为undefined
+  options = {},                       // 默认选项为空对象
+  ...extraArgs                        // 额外参数收集到数组中
 ) {
+  // 解构配置选项，设置默认值
   const {
-    parallel = false,
-    concurrency = Infinity,
-    errorHandler = (err) => console.error(err)
+    parallel = false,                                // 默认串行执行
+    concurrency = Infinity,                          // 默认无限制并发
+    errorHandler = (err) => console.error(err)       // 默认错误处理为控制台输出
   } = options;
 
+  // 初始化结果变量
   let result = initialValue;
 
-  // 串行执行
+  // ===== 串行执行逻辑 =====
   if (!parallel) {
+    // 按顺序处理每一项
     for (let i = 0; i < items.length; i++) {
       try {
-        const currentResult = await asyncFn(items[i]);
+        // 调用异步函数，传入当前项和额外参数
+        const currentResult = await asyncFn(items[i], ...extraArgs);
+        // 使用结果处理函数更新累积结果
         result = resultHandler(result, currentResult, i, items[i]);
       } catch (error) {
+        // 发生错误时调用错误处理函数
         errorHandler(error, items[i], i);
+        // 错误不中断循环，继续处理下一项
       }
     }
     return result;
   }
 
-  // 并行执行（可控制并发数）
+  // ===== 并行执行逻辑 =====
   if (parallel) {
-    // 处理无限制并发的情况
+    // ----- 处理无限制并发的情况 -----
     if (concurrency === Infinity) {
+      // 为所有项创建Promise数组
       const promises = items.map((item, index) =>
-        asyncFn(item)
-          .then(currentResult => ({ success: true, data: currentResult, index, item }))
+        // 调用异步函数并处理结果
+        asyncFn(item, ...extraArgs)
+          .then(currentResult => ({
+            success: true,             // 标记成功
+            data: currentResult,       // 保存结果数据
+            index,                     // 保存原始索引
+            item                       // 保存原始项
+          }))
           .catch(error => {
+            // 处理错误但不中断流程
             errorHandler(error, item, index);
-            return { success: false, index, item };
+            return {
+              success: false,          // 标记失败
+              index,
+              item
+            };
           })
       );
 
+      // 等待所有Promise完成
       const results = await Promise.all(promises);
 
+      // 处理所有成功的结果
       for (const res of results) {
         if (res.success) {
+          // 只处理成功的结果
           result = resultHandler(result, res.data, res.index, res.item);
         }
       }
@@ -562,25 +605,37 @@ async function processAsync(
       return result;
     }
 
-    // 处理有限制并发的情况
+    // ----- 处理有限制并发的情况 -----
+    // 将项目分割成多个块，每个块大小为concurrency
     const chunks = [];
     for (let i = 0; i < items.length; i += concurrency) {
       chunks.push(items.slice(i, i + concurrency));
     }
 
+    // 按块顺序处理，每个块内并行
     for (const chunk of chunks) {
+      // 为当前块创建Promise数组
       const promises = chunk.map((item, chunkIndex) => {
+        // 计算在原始数组中的实际索引
         const index = chunks.indexOf(chunk) * concurrency + chunkIndex;
-        return asyncFn(item)
-          .then(currentResult => ({ success: true, data: currentResult, index, item }))
+        // 调用异步函数并处理结果
+        return asyncFn(item, ...extraArgs)
+          .then(currentResult => ({
+            success: true,
+            data: currentResult,
+            index,
+            item
+          }))
           .catch(error => {
             errorHandler(error, item, index);
             return { success: false, index, item };
           });
       });
 
+      // 等待当前块的所有Promise完成
       const chunkResults = await Promise.all(promises);
 
+      // 处理当前块中所有成功的结果
       for (const res of chunkResults) {
         if (res.success) {
           result = resultHandler(result, res.data, res.index, res.item);
@@ -591,7 +646,6 @@ async function processAsync(
     return result;
   }
 }
-
 
 
 
